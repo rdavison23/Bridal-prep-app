@@ -1,5 +1,5 @@
-import styleQuiz from '../components/quiz/styleQuiz';
+import StyleQuiz from '../components/quiz/StyleQuiz';
 
 export default function QuizPage() {
-  return <styleQuiz />;
+  return <StyleQuiz />;
 }

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import QuizQuestion from './QuizQuestion';
 import { sumbitQuiz } from '../../api/quizApi';
 
-export default function styleQuiz() {
+export default function StyleQuiz() {
   const navigate = useNavigate();
 
   const question = [
