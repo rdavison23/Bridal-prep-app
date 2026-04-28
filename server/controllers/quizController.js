@@ -1,5 +1,5 @@
 import { pool } from '../db.js';
-import { fetchPexelsImages } from '../utils/pexelsClient';
+import { fetchPexelsImages } from '../utils/pexelsClient.js';
 
 //will add real quiz logic later
 function computeStyleProfile(answer) {
