@@ -1,10 +1,9 @@
-import exppress from 'express';
-import { handleQuizSubmission } from '..controller/quizController.js';
+import express from 'express';
+import { handleQuizSubmission } from '../controllers/quizController.js';
 
-const router = exppress.Router();
+const router = express.Router();
 
-//Post /api/quiz
-
+// POST /api/quiz
 router.post('/', handleQuizSubmission);
 
 export default router;
