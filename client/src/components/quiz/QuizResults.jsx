@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 export default function QuizResults() {
   const { state } = useLocation();
+  console.log('QuizResults state:', state);
 
   if (!state) return <p>No results found.</p>;
 
