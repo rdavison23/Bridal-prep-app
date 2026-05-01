@@ -42,6 +42,7 @@ export default function StyleQuiz() {
   async function handleSubmit(finalAnswers) {
     try {
       const result = await sumbitQuiz(finalAnswers, 1);
+      console.log('QUIZ RESULT FROM BACKEND:', result);
 
       navigate('/quiz/results', {
         state: {
