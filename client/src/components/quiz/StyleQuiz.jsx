@@ -42,7 +42,14 @@ export default function StyleQuiz() {
   async function handleSubmit(finalAnswers) {
     try {
       const result = await sumbitQuiz(finalAnswers, 1);
-      navigate('/quiz/results', { state: result });
+
+      navigate('/quiz/results', {
+        state: {
+          style_profile: result.style_profile,
+          images: result.images,
+          quiz_version: result.quiz_version,
+        },
+      });
     } catch (err) {
       console.error('Quiz submit failed:', err);
     }
@@ -50,6 +57,7 @@ export default function StyleQuiz() {
 
   return (
     <div className="quiz-container">
+      <h1>Style Quiz</h1>
       <QuizQuestion question={questions[current]} onSelect={handleAnswer} />
     </div>
   );
