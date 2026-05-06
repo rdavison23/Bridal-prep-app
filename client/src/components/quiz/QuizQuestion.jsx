@@ -3,8 +3,9 @@ export default function QuizQuestion({ question, onSelect }) {
 
   return (
     <div className="quiz-question">
-      <h2>{question.text}</h2>
-      <div className="quiz-options">
+      <p className="quiz-text">{question.text}</p>
+
+      <div className="options">
         {question.options.map((option) => (
           <button key={option} type="button" onClick={() => onSelect(option)}>
             {option}

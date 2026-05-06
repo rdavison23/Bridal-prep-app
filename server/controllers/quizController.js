@@ -1,34 +1,33 @@
 import { pool } from '../db.js';
 import { fetchPexelsImages } from '../utils/pexelsClient.js';
 
-//will add real quiz logic later
-function computeStyleProfile(answer) {
-  if (!answers) return 'Classic';
-  return 'Romantic'; //placeholder
+// Simple placeholder logic
+function computeStyleProfile(answers) {
+  if (!answers || answers.length === 0) return 'Classic';
+  return 'Romantic';
 }
 
 export async function handleQuizSubmission(req, res) {
   try {
-    const { user_id, answers, quiz_versio } = req.body;
+    const { user_id, answers, quiz_version } = req.body;
 
     const style_profile = computeStyleProfile(answers);
 
     const images = await fetchPexelsImages(style_profile);
 
     await pool.query(
-      ` INSERT INTO  quiz_results (user_id, style_profile, image_urls, quiz_verstion)
-            VALUES ($1, $2, $3, $4)`[
-        (user_id || null, style_profile, images, quiz_versio)
-      ]
+      `INSERT INTO quiz_results (user_id, style_profile, image_urls, quiz_version)
+       VALUES ($1, $2, $3, $4)`,
+      [user_id || null, style_profile, JSON.stringify(images), quiz_version]
     );
 
-    res.json({
+    return res.json({
       style_profile,
       images,
-      quiz_versio,
+      quiz_version,
     });
   } catch (err) {
-    console.log('Quiz error', err);
-    res.status(500).json({ error: 'Quiz processing failed' });
+    console.error('Quiz error', err);
+    return res.status(500).json({ error: 'Quiz processing failed' });
   }
 }

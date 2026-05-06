@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "startAll": " concurrently 'npm run dev' 'cd .. && cd server && npm start' "
   },
   "dependencies": {
+    "concurrently": "^9.2.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.14.2"
