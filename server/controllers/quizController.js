@@ -16,9 +16,9 @@ export async function handleQuizSubmission(req, res) {
     const images = await fetchPexelsImages(style_profile);
 
     await pool.query(
-      `INSERT INTO quiz_results (user_id, style_profile, image_urls, quiz_version)
+      `INSERT INTO bridal_prep.quiz_results (user_id, style_profile, image_urls, quiz_version)
        VALUES ($1, $2, $3, $4)`,
-      [user_id || null, style_profile, JSON.stringify(images), quiz_version]
+      [user_id || null, style_profile, images, quiz_version]
     );
 
     return res.json({
