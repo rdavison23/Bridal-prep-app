@@ -3,8 +3,32 @@ import { fetchPexelsImages } from '../utils/pexelsClient.js';
 
 // Simple placeholder logic
 function computeStyleProfile(answers) {
-  if (!answers || answers.length === 0) return 'Classic';
-  return 'Romantic';
+  const scores = {
+    Romantic: 0,
+    Modern: 0,
+    Classic: 0,
+    Boho: 0,
+  };
+
+  //Each answer contributes to a style
+  answers.forEach((answer) => {
+    if (scores[answer.style] !== undefined) {
+      scores[answer.style] += 1;
+    }
+  });
+
+  //Find the highest scoring style
+  let finalStyle = 'Romantic';
+  let maxScore = -1;
+
+  for (const style in scores) {
+    if (scores[style] > maxScore) {
+      maxScore = scores[style];
+      finalStyle = style;
+    }
+  }
+
+  return finalStyle;
 }
 
 export async function handleQuizSubmission(req, res) {
