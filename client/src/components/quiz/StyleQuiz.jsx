@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QuizQuestion from './QuizQuestion';
 import { sumbitQuiz } from '../../api/quizApi';
-
+import './quiz.css';
 export default function StyleQuiz() {
   const navigate = useNavigate();
 
