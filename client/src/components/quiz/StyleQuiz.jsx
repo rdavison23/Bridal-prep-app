@@ -45,9 +45,9 @@ export default function StyleQuiz() {
 
       navigate('/quiz/results', {
         state: {
-          style_profile: result.style_profile,
+          styleProfile: result.style_profile,
           images: result.images,
-          quiz_version: result.quiz_version,
+          quizVersion: result.quiz_version,
         },
       });
     } catch (err) {
