@@ -33,22 +33,23 @@ function computeStyleProfile(answers) {
 
 export async function handleQuizSubmission(req, res) {
   try {
-    const { user_id, answers, quiz_version } = req.body;
+    const { userId, answers, quizVersion } = req.body;
 
-    const style_profile = computeStyleProfile(answers);
+    const styleProfile = computeStyleProfile(answers);
 
-    const images = await fetchPexelsImages(style_profile);
+    // Fetch images based on computed style
+    const images = await fetchPexelsImages(styleProfile);
 
     await pool.query(
       `INSERT INTO bridal_prep.quiz_results (user_id, style_profile, image_urls, quiz_version)
        VALUES ($1, $2, $3, $4)`,
-      [user_id || null, style_profile, images, quiz_version]
+      [userId || null, styleProfile, images, quizVersion]
     );
 
     return res.json({
-      style_profile,
+      styleProfile,
       images,
-      quiz_version,
+      quizVersion,
     });
   } catch (err) {
     console.error('Quiz error', err);
