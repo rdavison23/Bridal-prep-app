@@ -6,7 +6,7 @@ export default function QuizResults() {
 
   if (!state) {
     return (
-      <div className="quiz-results">
+      <div className="quiz-results empty-state">
         <p>No result found. Please take the quiz first.</p>
         <button onClick={() => navigate('/quiz')}>Go to Quiz</button>
       </div>
@@ -17,16 +17,16 @@ export default function QuizResults() {
 
   return (
     <div className="quiz-results">
-      <h1>Your Bridal Style</h1>
+      <h1 className="results-title">Your Bridal Style</h1>
 
       <section className="style-profile">
-        <h2>Style Profile</h2>
-        <p>{styleProfile}</p>
-        <small>Quiz version: {quizVersion}</small>
+        <h2 className="section-title">Style Profile</h2>
+        <p className="style-text">{styleProfile}</p>
+        <small className="quiz-version">Quiz version: {quizVersion}</small>
       </section>
 
       <section className="results-images">
-        <h2>Inspiration Images</h2>
+        <h2 className="section-title">Inspiration Images</h2>
 
         <div className="image-grid">
           {images?.map((url, index) => (
