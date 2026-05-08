@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import QuizQuestion from './QuizQuestion';
 import { sumbitQuiz } from '../../api/quizApi';
 import './quiz.css';
+
 export default function StyleQuiz() {
   const navigate = useNavigate();
 
@@ -10,17 +11,32 @@ export default function StyleQuiz() {
     {
       id: 1,
       text: 'Which dress silhouette feels most like you?',
-      options: ['A-line', 'Ballgown', 'Mermaid', 'Sheath'],
+      options: [
+        { label: 'A-line', style: 'romantic' },
+        { label: 'Ballgown', style: 'classic' },
+        { label: 'Mermaid', style: 'modern' },
+        { label: 'Sheath', style: 'boho' },
+      ],
     },
     {
       id: 2,
       text: 'What style are you drawn to?',
-      options: ['Romantic', 'Modern', 'Classic', 'Boho'],
+      options: [
+        { label: 'Romantic', style: 'romantic' },
+        { label: 'Modern', style: 'modern' },
+        { label: 'Classic', style: 'classic' },
+        { label: 'Boho', style: 'boho' },
+      ],
     },
     {
       id: 3,
       text: 'How much detail do you like?',
-      options: ['Minimal', 'Some sparkle', 'Lace', 'All-out glam'],
+      options: [
+        { label: 'Minimal', style: 'modern' },
+        { label: 'Some sparkle', style: 'romantic' },
+        { label: 'Lace', style: 'classic' },
+        { label: 'All-out glam', style: 'romantic' },
+      ],
     },
   ];
 
