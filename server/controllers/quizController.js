@@ -4,21 +4,19 @@ import { fetchPexelsImages } from '../utils/pexelsClient.js';
 // Simple placeholder logic
 function computeStyleProfile(answers) {
   const scores = {
-    Romantic: 0,
-    Modern: 0,
-    Classic: 0,
-    Boho: 0,
+    romantic: 0,
+    modern: 0,
+    classic: 0,
+    boho: 0,
   };
 
-  //Each answer contributes to a style
   answers.forEach((answer) => {
     if (scores[answer.style] !== undefined) {
       scores[answer.style] += 1;
     }
   });
 
-  //Find the highest scoring style
-  let finalStyle = 'Romantic';
+  let finalStyle = 'romantic';
   let maxScore = -1;
 
   for (const style in scores) {
@@ -27,6 +25,8 @@ function computeStyleProfile(answers) {
       finalStyle = style;
     }
   }
+
+  console.log('Final computed style:', finalStyle);
 
   return finalStyle;
 }
