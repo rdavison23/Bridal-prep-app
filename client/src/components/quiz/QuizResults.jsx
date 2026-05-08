@@ -13,7 +13,7 @@ export default function QuizResults() {
     );
   }
 
-  const { style_profile, images, quiz_version } = state;
+  const { styleProfile, images, quizVersion } = state;
 
   return (
     <div className="quiz-results">
@@ -21,8 +21,8 @@ export default function QuizResults() {
 
       <section className="style-profile">
         <h2>Style Profile</h2>
-        <p>{style_profile}</p>
-        <small>Quiz version: {quiz_version}</small>
+        <p>{styleProfile}</p>
+        <small>Quiz version: {quizVersion}</small>
       </section>
 
       <section className="results-images">
