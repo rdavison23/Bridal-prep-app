@@ -57,13 +57,17 @@ export default function StyleQuiz() {
 
   async function handleSubmit(finalAnswers) {
     try {
-      const result = await sumbitQuiz(finalAnswers, 1);
+      const result = await sumbitQuiz({
+        userId: null,
+        answers: finalAnswers,
+        quizVersion: 1,
+      });
 
       navigate('/quiz/results', {
         state: {
-          styleProfile: result.style_profile,
+          styleProfile: result.styleProfile,
           images: result.images,
-          quizVersion: result.quiz_version,
+          quizVersion: result.quizVersion,
         },
       });
     } catch (err) {
