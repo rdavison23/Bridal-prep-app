@@ -6,9 +6,9 @@ export default function QuizQuestion({ question, onSelect }) {
       <p className="quiz-text">{question.text}</p>
 
       <div className="options">
-        {question.options.map((option) => (
-          <button key={option} type="button" onClick={() => onSelect(option)}>
-            {option}
+        {question.options.map((option, index) => (
+          <button key={index} type="button" onClick={() => onSelect(option)}>
+            {option.label}
           </button>
         ))}
       </div>
