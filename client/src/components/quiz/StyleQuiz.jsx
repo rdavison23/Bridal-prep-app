@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QuizQuestion from './QuizQuestion';
-import { sumbitQuiz } from '../../api/quizApi';
+import { submitQuiz } from '../../api/quizApi';
 import './quiz.css';
 
 export default function StyleQuiz() {
@@ -57,7 +57,7 @@ export default function StyleQuiz() {
 
   async function handleSubmit(finalAnswers) {
     try {
-      const result = await sumbitQuiz({
+      const result = await submitQuiz({
         userId: null,
         answers: finalAnswers,
         quizVersion: 1,
