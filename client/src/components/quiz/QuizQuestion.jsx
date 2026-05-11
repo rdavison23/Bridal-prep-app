@@ -1,4 +1,4 @@
-export default function QuizQuestion({ question, onSelect }) {
+export default function QuizQuestion({ question, onSelect, current, total }) {
   if (!question) return <p>No question found.</p>;
 
   return (
@@ -11,6 +11,10 @@ export default function QuizQuestion({ question, onSelect }) {
             {option.label}
           </button>
         ))}
+      </div>
+
+      <div className="quiz-progress">
+        Question {current + 1} of {total}
       </div>
     </div>
   );
