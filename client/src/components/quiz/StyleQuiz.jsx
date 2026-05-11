@@ -78,7 +78,12 @@ export default function StyleQuiz() {
   return (
     <div className="quiz-container">
       <h1>Style Quiz</h1>
-      <QuizQuestion question={questions[current]} onSelect={handleAnswer} />
+      <QuizQuestion
+        question={questions[current]}
+        onSelect={handleAnswer}
+        current={current}
+        total={questions.length}
+      />{' '}
     </div>
   );
 }
