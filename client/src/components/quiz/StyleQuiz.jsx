@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QuizQuestion from './QuizQuestion';
-import { sumbitQuiz } from '../../api/quizApi';
+import { submitQuiz } from '../../api/quizApi';
+import './quiz.css';
 
 export default function StyleQuiz() {
   const navigate = useNavigate();
@@ -10,17 +11,32 @@ export default function StyleQuiz() {
     {
       id: 1,
       text: 'Which dress silhouette feels most like you?',
-      options: ['A-line', 'Ballgown', 'Mermaid', 'Sheath'],
+      options: [
+        { label: 'A-line', style: 'romantic' },
+        { label: 'Ballgown', style: 'classic' },
+        { label: 'Mermaid', style: 'modern' },
+        { label: 'Sheath', style: 'boho' },
+      ],
     },
     {
       id: 2,
       text: 'What style are you drawn to?',
-      options: ['Romantic', 'Modern', 'Classic', 'Boho'],
+      options: [
+        { label: 'Romantic', style: 'romantic' },
+        { label: 'Modern', style: 'modern' },
+        { label: 'Classic', style: 'classic' },
+        { label: 'Boho', style: 'boho' },
+      ],
     },
     {
       id: 3,
       text: 'How much detail do you like?',
-      options: ['Minimal', 'Some sparkle', 'Lace', 'All-out glam'],
+      options: [
+        { label: 'Minimal', style: 'modern' },
+        { label: 'Some sparkle', style: 'romantic' },
+        { label: 'Lace', style: 'classic' },
+        { label: 'All-out glam', style: 'romantic' },
+      ],
     },
   ];
 
@@ -41,14 +57,17 @@ export default function StyleQuiz() {
 
   async function handleSubmit(finalAnswers) {
     try {
-      const result = await sumbitQuiz(finalAnswers, 1);
-      console.log('QUIZ RESULT FROM BACKEND:', result);
+      const result = await submitQuiz({
+        userId: null,
+        answers: finalAnswers,
+        quizVersion: 1,
+      });
 
       navigate('/quiz/results', {
         state: {
-          style_profile: result.style_profile,
+          styleProfile: result.styleProfile,
           images: result.images,
-          quiz_version: result.quiz_version,
+          quizVersion: result.quizVersion,
         },
       });
     } catch (err) {
@@ -59,7 +78,12 @@ export default function StyleQuiz() {
   return (
     <div className="quiz-container">
       <h1>Style Quiz</h1>
-      <QuizQuestion question={questions[current]} onSelect={handleAnswer} />
+      <QuizQuestion
+        question={questions[current]}
+        onSelect={handleAnswer}
+        current={current}
+        total={questions.length}
+      />{' '}
     </div>
   );
 }

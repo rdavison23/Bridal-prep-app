@@ -3,28 +3,53 @@ import { fetchPexelsImages } from '../utils/pexelsClient.js';
 
 // Simple placeholder logic
 function computeStyleProfile(answers) {
-  if (!answers || answers.length === 0) return 'Classic';
-  return 'Romantic';
+  const scores = {
+    romantic: 0,
+    modern: 0,
+    classic: 0,
+    boho: 0,
+  };
+
+  answers.forEach((answer) => {
+    if (scores[answer.style] !== undefined) {
+      scores[answer.style] += 1;
+    }
+  });
+
+  let finalStyle = 'romantic';
+  let maxScore = -1;
+
+  for (const style in scores) {
+    if (scores[style] > maxScore) {
+      maxScore = scores[style];
+      finalStyle = style;
+    }
+  }
+
+  console.log('Final computed style:', finalStyle);
+
+  return finalStyle;
 }
 
 export async function handleQuizSubmission(req, res) {
   try {
-    const { user_id, answers, quiz_version } = req.body;
+    const { userId, answers, quizVersion } = req.body;
 
-    const style_profile = computeStyleProfile(answers);
+    const styleProfile = computeStyleProfile(answers);
 
-    const images = await fetchPexelsImages(style_profile);
+    // Fetch images based on computed style
+    const images = await fetchPexelsImages(styleProfile);
 
     await pool.query(
-      `INSERT INTO quiz_results (user_id, style_profile, image_urls, quiz_version)
+      `INSERT INTO bridal_prep.quiz_results (user_id, style_profile, image_urls, quiz_version)
        VALUES ($1, $2, $3, $4)`,
-      [user_id || null, style_profile, JSON.stringify(images), quiz_version]
+      [userId || null, styleProfile, images, quizVersion]
     );
 
     return res.json({
-      style_profile,
+      styleProfile,
       images,
-      quiz_version,
+      quizVersion,
     });
   } catch (err) {
     console.error('Quiz error', err);

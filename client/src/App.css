@@ -1,3 +1,14 @@
+:root {
+  --bg: #f6f6f8; /* Mist White */
+  --card: #fff7f1; /* Ivory Cream */
+  --primary: #c57a7a; /* Clay Rose */
+  --text: #2c2c2c; /* Charcoal Ink */
+  --accent: #dcc7a1; /* Golden Beige */
+
+  --heading-font: 'Fraunces', serif;
+  --body-font: 'Inter', sans-serif;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
