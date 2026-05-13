@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { pool } from './db.js';
 
-//import budgetRoutes from './routes/budgetRoutes.js';
+import budgetRoutes from './routes/budgetRoutes.js';
 //import checklistRoutes from './routes/checklistRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
 
@@ -18,7 +18,7 @@ app.get('/health', (req, res) => {
 });
 
 //API routes
-//app.use('/api/budget', budgetRoutes);
+app.use('/api/budget', budgetRoutes);
 //app.use('/api/checklist', checklistRoutes);
 app.use('/api/quiz', quizRoutes);
 
