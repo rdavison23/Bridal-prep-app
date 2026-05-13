@@ -1,6 +1,6 @@
 export function calculateBudget({ idealBudget, maxBudget }) {
   const safeIdeal = Number(idealBudget) || 0;
-  const sageMax = Number(maxBudget) || safeIdeal;
+  const safeMax = Number(maxBudget) || safeIdeal;
   const base = safeMax || safeIdeal;
 
   const breakdown = [
