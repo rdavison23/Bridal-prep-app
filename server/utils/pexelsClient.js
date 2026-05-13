@@ -14,7 +14,7 @@ export async function fetchPexelsImages(style) {
   const response = await fetch(
     `https://api.pexels.com/v1/search?query=${encodeURIComponent(
       query
-    )}&per_page=6`,
+    )}&per_page=80`,
     {
       headers: {
         Authorization: process.env.PEXELS_API_KEY,
@@ -24,5 +24,9 @@ export async function fetchPexelsImages(style) {
 
   const data = await response.json();
 
-  return data.photos.map((p) => p.src.large);
+  // Shuffle and take 8
+  const shuffled = data.photos.sort(() => Math.random() - 0.5);
+  const selected = shuffled.slice(0, 8);
+
+  return selected.map((p) => p.src.large);
 }
