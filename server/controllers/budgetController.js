@@ -80,12 +80,47 @@ export async function getLatestBudget(req, res) {
     const { rows } = await pool.query(query, [userId]);
 
     if (rows.length === 0) {
-      return res.status(404).json({ error: 'No budget found for this user' });
+      return res.status(404).json({
+        error: 'No budget found for this user',
+        empty: true,
+        message: 'User has not created a budget yet',
+      });
     }
 
-    return res.json(rows[0]);
+    const budget = rows[0];
+
+    const requiredFields = [
+      'id',
+      'userId',
+      'idealBudget',
+      'maxBudget',
+      'hiddenCostsTotal',
+      'finalEstimate',
+      'createdAt',
+    ];
+
+    for (const field of requiredFields) {
+      if (budget[field] === undefined) {
+        console.warn(
+          `Budget integrity warning: missing field "${field}" for user ${userId}`
+        );
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      budget,
+    });
   } catch (err) {
-    console.error('Error in getLatestBudget:', err);
-    res.status(500).json({ error: 'Failed to fetch budget' });
+    console.error(' Error in getLatestBudget:', {
+      message: err.message,
+      stack: err.stack,
+      userId: req.user?.id,
+    });
+
+    return res.status(500).json({
+      error: 'Failed to fetch budget',
+      details: process.env.NODE_ENV === 'development' ? err.message : undefined,
+    });
   }
 }
