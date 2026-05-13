@@ -3,7 +3,7 @@ import {
   previewBudget,
   createBudget,
   getLatestBudget,
-} from '../controllers/budgetController';
+} from '../controllers/budgetController.js';
 
 const router = express.Router();
 
@@ -14,6 +14,6 @@ router.post('/preview', previewBudget);
 router.post('/', createBudget);
 
 // Get last saved budget for a user
-router.get('/:userId', getLatestBudget);
+router.get('/latest', getLatestBudget);
 
 export default router;
