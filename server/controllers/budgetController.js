@@ -55,13 +55,12 @@ export async function createBudget(req, res) {
 
 export async function getLatestBudget(req, res) {
   try {
-    const { userId } = req.params;
-
-    // Validate userId
-    const numericUserId = Number(userId);
-    if (isNaN(numericUserId)) {
-      return res.status(400).json({ error: 'Invalid userId' });
+    // Require login
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ error: 'Login required' });
     }
+
+    const userId = req.user.id;
 
     const query = `
         SELECT
@@ -78,7 +77,7 @@ export async function getLatestBudget(req, res) {
         LIMIT 1;
       `;
 
-    const { rows } = await pool.query(query, [numericUserId]);
+    const { rows } = await pool.query(query, [userId]);
 
     if (rows.length === 0) {
       return res.status(404).json({ error: 'No budget found for this user' });
