@@ -52,3 +52,41 @@ export async function createBudget(req, res) {
     res.status(500).json({ error: 'Failed to save budget' });
   }
 }
+
+export async function getLatestBudget(req, res) {
+  try {
+    const { userId } = req.params;
+
+    // Validate userId
+    const numericUserId = Number(userId);
+    if (isNaN(numericUserId)) {
+      return res.status(400).json({ error: 'Invalid userId' });
+    }
+
+    const query = `
+        SELECT
+          id,
+          user_id AS "userId",
+          ideal_budget AS "idealBudget",
+          max_budget AS "maxBudget",
+          hidden_costs_total AS "hiddenCostsTotal",
+          final_estimate AS "finalEstimate",
+          created_at AS "createdAt"
+        FROM bridal_prep.budgets
+        WHERE user_id = $1
+        ORDER BY created_at DESC
+        LIMIT 1;
+      `;
+
+    const { rows } = await pool.query(query, [numericUserId]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'No budget found for this user' });
+    }
+
+    return res.json(rows[0]);
+  } catch (err) {
+    console.error('Error in getLatestBudget:', err);
+    res.status(500).json({ error: 'Failed to fetch budget' });
+  }
+}
