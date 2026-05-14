@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { previewBudget, createBudget } from '../api/budgetApi';
 
 export default function CreateBudgetPage() {
+  const navigate = useNavigate();
   const [idealBudget, setIdealBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
   const [preview, setPreview] = useState(null);
@@ -33,7 +35,7 @@ export default function CreateBudgetPage() {
         maxBudget: Number(maxBudget),
       });
 
-      window.location.href = '/budget'; // redirect to budget page
+      navigate('/budget'); // redirect to budget page
     } catch (err) {
       setError('Failed to save budget');
     } finally {
