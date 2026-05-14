@@ -55,12 +55,13 @@ export async function createBudget(req, res) {
 
 export async function getLatestBudget(req, res) {
   try {
-    // Require login
-    if (!req.user || !req.user.id) {
-      return res.status(401).json({ error: 'Login required' });
-    }
+    // TEMPORARY: disable login requirement during development
+    // if (!req.user || !req.user.id) {
+    //   return res.status(401).json({ error: 'Login required' });
+    // }
 
-    const userId = req.user.id;
+    // Use a fake user ID for now
+    const userId = req.user?.id || 1;
 
     const query = `
         SELECT
