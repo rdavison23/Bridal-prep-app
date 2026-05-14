@@ -86,3 +86,35 @@ export const deleteChecklistItem = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete item' });
   }
 };
+
+// RESET checklist to defaults
+export const resetChecklist = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    await pool.query(
+      'DELETE FROM bridal_prep.checklist_items WHERE user_id = $1',
+      [userId]
+    );
+
+    const inserted = await preloadDefaults(userId);
+
+    res.json({ success: true, items: inserted });
+  } catch (err) {
+    console.error('Error resetting checklist:', err);
+    res.status(500).json({ error: 'Failed to reset checklist' });
+  }
+};
+
+// Helper: preload default items
+const preloadDefaults = async (userId) => {
+  const inserts = defaultChecklistItems.map((itemText) =>
+    pool.query(
+      'INSERT INTO bridal_prep.checklist_items (user_id, item_text) VALUES ($1, $2) RETURNING *',
+      [userId, itemText]
+    )
+  );
+
+  const results = await Promise.all(inserts);
+  return results.map((r) => r.rows[0]);
+};
