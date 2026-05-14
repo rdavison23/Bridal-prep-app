@@ -1,4 +1,5 @@
 import useBudget from '../hooks/useBudget';
+import BudgetBreakdown from '../components/budget/BudgetBreakdown';
 
 export default function BudgetPage() {
   const { budget, loading, error } = useBudget();
@@ -10,25 +11,7 @@ export default function BudgetPage() {
   return (
     <div className="budget-container">
       <h1>Your Budget Summary</h1>
-
-      <div className="budget-card">
-        <p>
-          <strong>Ideal Budget:</strong> ${budget.idealBudget}
-        </p>
-        <p>
-          <strong>Max Budget:</strong> ${budget.maxBudget}
-        </p>
-        <p>
-          <strong>Hidden Costs:</strong> ${budget.hiddenCostsTotal}
-        </p>
-        <p>
-          <strong>Final Estimate:</strong> ${budget.finalEstimate}
-        </p>
-        <p>
-          <strong>Created:</strong>{' '}
-          {new Date(budget.createdAt).toLocaleString()}
-        </p>
-      </div>
+      <BudgetBreakdown budget={budget} />
     </div>
   );
 }
