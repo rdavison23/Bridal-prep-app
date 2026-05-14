@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import QuizPage from './pages/QuizPage';
 import QuizResultsPage from './pages/QuizResultsPage';
-
+import CreateBudgetPage from './pages/CreateBudgetPage';
 import BudgetPage from './pages/BudgetPage';
 
 export default function AppRouter() {
@@ -12,6 +12,7 @@ export default function AppRouter() {
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz/results" element={<QuizResultsPage />} />
         <Route path="/budget" element={<BudgetPage />} />
+        <Route path="/create-budget" element={<CreateBudgetPage />} />
       </Routes>
     </BrowserRouter>
   );
