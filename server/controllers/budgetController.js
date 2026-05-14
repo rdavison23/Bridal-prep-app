@@ -61,7 +61,7 @@ export async function getLatestBudget(req, res) {
     // }
 
     // Use a fake user ID for now
-    const userId = req.user?.id || 1;
+    const userId = req.user?.id || null;
 
     const query = `
         SELECT
@@ -78,7 +78,25 @@ export async function getLatestBudget(req, res) {
         LIMIT 1;
       `;
 
-    const { rows } = await pool.query(query, [userId]);
+    const queryIsNullUser = `
+      SELECT
+        id,
+        user_id AS "userId",
+        ideal_budget AS "idealBudget",
+        max_budget AS "maxBudget",
+        hidden_costs_total AS "hiddenCostsTotal",
+        final_estimate AS "finalEstimate",
+        created_at AS "createdAt"
+      FROM bridal_prep.budgets
+      WHERE user_id IS NULL
+      ORDER BY created_at DESC
+      LIMIT 1;
+    `;
+
+    // const { rows } = await pool.query(query, [userId]);
+    const { rows } = userId
+      ? await pool.query(query, [userId])
+      : await pool.query(queryIsNullUser);
 
     if (rows.length === 0) {
       return res.status(404).json({
