@@ -10,9 +10,14 @@ export default function useBudget() {
     async function fetchBudget() {
       try {
         const data = await getLatestBudget();
-        setBudget(data.budget || data); // depending on your controller shape
+
+        if (data.empty) {
+          setBudget(null);
+        } else {
+          setBudget(data.budget);
+        }
       } catch (err) {
-        setError(err.message || 'Failed to load budget');
+        setError(err.message);
       } finally {
         setLoading(false);
       }
