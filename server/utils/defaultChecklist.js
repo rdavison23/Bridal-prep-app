@@ -1,6 +1,6 @@
 export const defaultChecklistItems = [
   // What to bring
-  'Inspiration photos (Pinterest, screenshots, IG saves)',
+  'Inspiration photos',
   'Nude undergarments',
   'Strapless bra (if needed)',
   'Shoes similar to wedding height',
