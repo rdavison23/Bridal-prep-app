@@ -1,8 +1,8 @@
-const BASE_URL = 'http://localhost:3001/api'; // adjust if needed
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 async function apiClient(endpoint, options = {}) {
   const config = {
-    credentials: 'include', // send cookies if you're using auth
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...(options.headers || {}),
