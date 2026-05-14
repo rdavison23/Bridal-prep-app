@@ -7,10 +7,10 @@ export default function useBudget() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function loadBudget() {
+    async function fetchBudget() {
       try {
         const data = await getLatestBudget();
-        setBudget(data);
+        setBudget(data.budget || data); // depending on your controller shape
       } catch (err) {
         setError(err.message || 'Failed to load budget');
       } finally {
@@ -18,7 +18,7 @@ export default function useBudget() {
       }
     }
 
-    loadBudget();
+    fetchBudget();
   }, []);
 
   return { budget, loading, error };
