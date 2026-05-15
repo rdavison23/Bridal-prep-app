@@ -1,4 +1,3 @@
-console.log('>>> RUNNING server/server.js <<<');
 import express from 'express';
 import {
   getChecklistItems,

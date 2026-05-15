@@ -34,7 +34,7 @@ export const addChecklistItem = async (req, res) => {
   }
 
   try {
-    const result = await db.query(
+    const result = await pool.query(
       'INSERT INTO bridal_prep.checklist_items (user_id, item_text) VALUES ($1, $2) RETURNING *',
       [userId, itemText]
     );
