@@ -1,4 +1,3 @@
-// src/api/checklistApi.js
 import apiClient from './apiClient';
 
 export const getChecklist = async (userId) => {
