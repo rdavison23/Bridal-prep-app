@@ -1,0 +1,14 @@
+export default function ChecklistItem({ item, onToggle }) {
+  return (
+    <li className={`checklist-item ${item.is_completed ? 'completed' : ''}`}>
+      <label>
+        <input
+          type="checkbox"
+          checked={item.is_completed}
+          onChange={onToggle}
+        />
+        {item.item_text}
+      </label>
+    </li>
+  );
+}
