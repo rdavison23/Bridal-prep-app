@@ -1,0 +1,103 @@
+/* === Typography === */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* === Container === */
+.checklist-container {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff7f1; /* Ivory Cream */
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dcc7a1; /* Golden Beige */
+}
+
+/* === Heading === */
+.checklist-container h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.9rem;
+  color: #2c2c2c; /* Charcoal Ink */
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+/* === List === */
+.checklist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* === Checklist Item === */
+.checklist-item {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 0.6rem;
+  border-bottom: 1px solid #e8e2d9;
+  transition: background 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  color: #2c2c2c;
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-item:hover {
+  background: #f6f6f8; /* Mist White */
+}
+
+.checklist-item.completed label {
+  text-decoration: line-through;
+  color: #8a8a8a;
+}
+
+/* Checkbox */
+.checklist-item input[type='checkbox'] {
+  margin-right: 0.75rem;
+  transform: scale(1.25);
+  accent-color: #c57a7a; /* Clay Rose */
+}
+
+/* === Add Item Form === */
+.checklist-form {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.checklist-form input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 1px solid #dcc7a1;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background: #f6f6f8;
+  color: #2c2c2c;
+}
+
+.checklist-form input::placeholder {
+  color: #8a8a8a;
+}
+
+/* === Button === */
+.checklist-form button {
+  padding: 0.7rem 1.2rem;
+  background: #c57a7a; /* Clay Rose */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.checklist-form button:hover {
+  background: #b56c6c;
+}
+
+.checklist-form button:active {
+  transform: scale(0.97);
+}
