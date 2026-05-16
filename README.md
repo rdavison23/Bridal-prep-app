@@ -1,6 +1,8 @@
 # Bridal Prep App 💍
 
-Bridal Prep is a PERN‑stack web app designed to reduce overwhelm for brides by offering a guided style quiz, budget clarity, and appointment preparation tools. The goal is to turn "I don't know where to start" into "I'm ready."
+[Redu's Final Project Doc](https://docs.google.com/document/d/1YIxb0eu9zeemv84UHcdmy3Q48qa55gNTxsJOdmFna_w/edit?tab=t.6f7ymtycmd16)
+
+Bridal Prep is a PERN-stack web app designed to reduce overwhelm for brides by offering a guided style quiz, budget clarity, and appointment preparation tools. The goal is to turn "I don't know where to start" into "I'm ready."
 
 ## Features (MVP)
 
