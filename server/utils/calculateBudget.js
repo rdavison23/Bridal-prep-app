@@ -1,7 +1,7 @@
 export function calculateBudget({ idealBudget, maxBudget }) {
   const safeIdeal = Number(idealBudget) || 0;
   const safeMax = Number(maxBudget) || safeIdeal;
-  const base = safeMax || safeIdeal;
+  const base = safeIdeal; // calculate from ideal so users can see how close they get to their max
 
   const breakdown = [
     { category: 'Dress', percent: 70 },
@@ -14,9 +14,8 @@ export function calculateBudget({ idealBudget, maxBudget }) {
     estimated: Math.round((item.percent / 100) * base),
   }));
 
-  //hidden costs
   const hiddenCosts = [
-    { label: 'Alterations', estimated: Math.round(base * 0.15) }, // realistic
+    { label: 'Alterations', estimated: Math.round(base * 0.15) },
     { label: 'Veil', estimated: Math.round(base * 0.05) },
     { label: 'Rush Fees', estimated: Math.round(base * 0.03) },
     { label: 'Sales Tax', estimated: Math.round(base * 0.1) },
@@ -28,6 +27,7 @@ export function calculateBudget({ idealBudget, maxBudget }) {
   );
 
   const finalEstimate = base + hiddenCostsTotal;
+  const overMax = safeMax > 0 && finalEstimate > safeMax; // flag if they're over their max
 
   return {
     idealBudget: safeIdeal,
@@ -37,5 +37,6 @@ export function calculateBudget({ idealBudget, maxBudget }) {
     hiddenCosts,
     hiddenCostsTotal,
     finalEstimate,
+    overMax, // frontend can use this to warn the user
   };
 }
