@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { pool } from './db.js';
 
 import budgetRoutes from './routes/budgetRoutes.js';
-//import checklistRoutes from './routes/checklistRoutes.js';
+import checklistRoutes from './routes/checklistRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
 
 dotenv.config();
@@ -24,7 +24,7 @@ app.get('/health', (req, res) => {
 
 //API routes
 app.use('/api/budget', budgetRoutes);
-//app.use('/api/checklist', checklistRoutes);
+app.use('/api/checklist', checklistRoutes);
 app.use('/api/quiz', quizRoutes);
 
 app.get('/db-test', async (req, res) => {
