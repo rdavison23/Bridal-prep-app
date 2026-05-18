@@ -3,14 +3,19 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { pool } from './db.js';
 
-//import budgetRoutes from './routes/budgetRoutes.js';
+import budgetRoutes from './routes/budgetRoutes.js';
 //import checklistRoutes from './routes/checklistRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get('/health', (req, res) => {
@@ -18,7 +23,7 @@ app.get('/health', (req, res) => {
 });
 
 //API routes
-//app.use('/api/budget', budgetRoutes);
+app.use('/api/budget', budgetRoutes);
 //app.use('/api/checklist', checklistRoutes);
 app.use('/api/quiz', quizRoutes);
 
@@ -31,7 +36,11 @@ app.get('/db-test', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+export default app;
