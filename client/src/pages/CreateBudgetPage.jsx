@@ -21,7 +21,7 @@ export default function CreateBudgetPage() {
       });
       setPreview(data);
     } catch (err) {
-      setError('Failed to preview budget');
+      setError(err.message);
     }
   }
 
@@ -37,7 +37,7 @@ export default function CreateBudgetPage() {
 
       navigate('/budget'); // redirect to budget page
     } catch (err) {
-      setError('Failed to save budget');
+      setError(err.message);
     } finally {
       setSaving(false);
     }
