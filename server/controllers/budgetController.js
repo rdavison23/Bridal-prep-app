@@ -16,7 +16,7 @@ export async function previewBudget(req, res) {
 
 export async function createBudget(req, res) {
   try {
-    const { userId = null, idealBudget, maxBudget } = req.body;
+    const { userId = 1, idealBudget, maxBudget } = req.body; // default to 1 until auth is implemented
 
     const calc = calculateBudget({ idealBudget, maxBudget });
 
@@ -55,30 +55,9 @@ export async function createBudget(req, res) {
 
 export async function getLatestBudget(req, res) {
   try {
-    // TEMPORARY: disable login requirement during development
-    // if (!req.user || !req.user.id) {
-    //   return res.status(401).json({ error: 'Login required' });
-    // }
-
-    // Use a fake user ID for now
-    const userId = req.user?.id || null;
+    const userId = req.user?.id || 1; // default to 1 until auth is implemented
 
     const query = `
-        SELECT
-          id,
-          user_id AS "userId",
-          ideal_budget AS "idealBudget",
-          max_budget AS "maxBudget",
-          hidden_costs_total AS "hiddenCostsTotal",
-          final_estimate AS "finalEstimate",
-          created_at AS "createdAt"
-        FROM bridal_prep.budgets
-        WHERE user_id = $1
-        ORDER BY created_at DESC
-        LIMIT 1;
-      `;
-
-    const queryIsNullUser = `
       SELECT
         id,
         user_id AS "userId",
@@ -88,15 +67,12 @@ export async function getLatestBudget(req, res) {
         final_estimate AS "finalEstimate",
         created_at AS "createdAt"
       FROM bridal_prep.budgets
-      WHERE user_id IS NULL
+      WHERE user_id = $1
       ORDER BY created_at DESC
       LIMIT 1;
     `;
 
-    // const { rows } = await pool.query(query, [userId]);
-    const { rows } = userId
-      ? await pool.query(query, [userId])
-      : await pool.query(queryIsNullUser);
+    const { rows } = await pool.query(query, [userId]);
 
     if (rows.length === 0) {
       return res.status(404).json({
@@ -131,7 +107,7 @@ export async function getLatestBudget(req, res) {
       budget,
     });
   } catch (err) {
-    console.error(' Error in getLatestBudget:', {
+    console.error('Error in getLatestBudget:', {
       message: err.message,
       stack: err.stack,
       userId: req.user?.id,
