@@ -24,9 +24,9 @@ export async function fetchPexelsImages(style) {
 
   const data = await response.json();
 
-  // Shuffle and take 8
+  // Shuffle and take 9
   const shuffled = data.photos.sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, 8);
+  const selected = shuffled.slice(0, 9);
 
   return selected.map((p) => p.src.large);
 }
