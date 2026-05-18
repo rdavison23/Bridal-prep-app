@@ -1,6 +1,6 @@
 # Bridal-prep-app
 
-Bridal Prep is a PERN‑stack web app designed to reduce overwhelm for brides by offering a guided style quiz, budget clarity, and appointment preparation tools. The goal is to turn “I don’t know where to start” into “I’m ready.”
+Bridal Prep is a PERN‑stack web app designed to reduce overwhelm for brides by offering a guided style quiz, budget clarity, and appointment preparation tools. The goal is to turn "I don't know where to start" into "I'm ready."
 
 ## Features MVP
 
@@ -28,6 +28,29 @@ Bridal Prep is a PERN‑stack web app designed to reduce overwhelm for brides by
 - Database: PostgreSQL
 - External API: Pexels API
 - Deployment: Render (FE + BE)
+
+## Environment Variables
+
+### Server (`server/.env`)
+
+| Variable       | Description                  |
+| -------------- | ---------------------------- |
+| `DATABASE_URL` | PostgreSQL connection string |
+| `NODE_ENV`     | App environment (see below)  |
+
+### `NODE_ENV` Modes
+
+| Value         | Description                                          |
+| ------------- | ---------------------------------------------------- |
+| `production`  | SSL enabled for database connection. Used on Render. |
+| `development` | SSL disabled. Uses real PostgreSQL locally.          |
+| `test`        | Uses a mock database pool. No real DB connection.    |
+
+### Client (`client/.env`)
+
+| Variable            | Description                                                      |
+| ------------------- | ---------------------------------------------------------------- |
+| `VITE_API_BASE_URL` | Base URL for all API requests (e.g. `http://localhost:3001/api`) |
 
 ## Backend Progress
 
