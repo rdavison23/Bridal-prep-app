@@ -1,14 +1,34 @@
 import apiClient from './apiClient';
 
-export const getChecklist = (userId) => apiClient(`/checklist/${userId}`);
+export const getChecklist = async (userId) => {
+  try {
+    return await apiClient(`/api/checklist/${userId}`);
+  } catch (err) {
+    console.error(' Failed to load checklist:', err);
+    throw new Error('Unable to load checklist. Please try again.');
+  }
+};
 
-export const toggleChecklistItem = (itemId) =>
-  apiClient(`/checklist/toggle/${itemId}`, {
-    method: 'PUT',
-  });
+export const toggleChecklistItem = async (userId, itemId) => {
+  try {
+    return await apiClient(`/api/checklist/${userId}/${itemId}`, {
+      method: 'PATCH',
+    });
+  } catch (err) {
+    console.error(' Failed to toggle checklist item:', err);
+    throw new Error('Unable to update checklist item. Please try again.');
+  }
+};
 
-export const addChecklistItem = (userId, item_text) =>
-  apiClient(`/checklist/${userId}`, {
-    method: 'POST',
-    body: JSON.stringify({ item_text }),
-  });
+export const addChecklistItem = async (userId, item_text) => {
+  try {
+    return await apiClient(`/api/checklist/${userId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_text }),
+    });
+  } catch (err) {
+    console.error(' Failed to add checklist item:', err);
+    throw new Error('Unable to add checklist item. Please try again.');
+  }
+};
