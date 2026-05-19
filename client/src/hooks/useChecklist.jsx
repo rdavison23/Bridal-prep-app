@@ -8,7 +8,10 @@ import {
 export default function useChecklist(userId) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [newItemText, setNewItemText] = useState('');
+  const [error, setError] = useState(null);
 
+  // Load checklist on mount
   useEffect(() => {
     async function load() {
       try {
@@ -16,6 +19,7 @@ export default function useChecklist(userId) {
         setItems(data);
       } catch (err) {
         console.error('Checklist load error:', err);
+        setError('Failed to load checklist.');
       } finally {
         setLoading(false);
       }
@@ -23,19 +27,49 @@ export default function useChecklist(userId) {
     load();
   }, [userId]);
 
-  const toggleItem = async (id) => {
+  // Toggle item completion
+  const toggleItem = async (itemId) => {
+    // Optimistic UI update
     setItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, is_completed: !item.is_completed } : item
+        item.id === itemId
+          ? { ...item, is_completed: !item.is_completed }
+          : item
       )
     );
-    await toggleChecklistItem(id);
+
+    try {
+      await toggleChecklistItem(userId, itemId);
+    } catch (err) {
+      console.error('Toggle error:', err);
+      setError('Failed to update item.');
+    }
   };
 
-  const addItem = async (text) => {
-    const newItem = await addChecklistItem(userId, text);
-    setItems((prev) => [...prev, newItem]);
+  // Add new item
+  const addItem = async () => {
+    if (!newItemText.trim()) {
+      setError('Please enter an item before adding.');
+      return;
+    }
+
+    try {
+      const newItem = await addChecklistItem(userId, newItemText.trim());
+      setItems((prev) => [...prev, newItem]);
+      setNewItemText('');
+    } catch (err) {
+      console.error('Add item error:', err);
+      setError(err.message);
+    }
   };
 
-  return { items, loading, toggleItem, addItem };
+  return {
+    items,
+    loading,
+    error,
+    newItemText,
+    setNewItemText,
+    addItem,
+    toggleItem,
+  };
 }
