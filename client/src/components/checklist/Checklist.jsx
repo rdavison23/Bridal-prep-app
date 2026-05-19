@@ -4,21 +4,28 @@ import useChecklist from '../../hooks/useChecklist';
 import './checklist.css';
 
 export default function Checklist({ userId }) {
-  const { items, loading, toggleItem, addItem } = useChecklist(userId);
-  const [newItem, setNewItem] = useState('');
+  const {
+    items,
+    loading,
+    toggleItem,
+    addItem,
+    newItemText,
+    setNewItemText,
+    error,
+  } = useChecklist(userId);
 
   if (loading) return <p>Loading checklist…</p>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!newItem.trim()) return;
-    addItem(newItem);
-    setNewItem('');
+    addItem();
   };
 
   return (
     <div className="checklist-container">
       <h2>Your Bridal Prep Checklist</h2>
+
+      {error && <p className="error">{error}</p>}
 
       <ul className="checklist-list">
         {items.map((item) => (
@@ -34,8 +41,8 @@ export default function Checklist({ userId }) {
         <input
           type="text"
           placeholder="Add new item…"
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
+          value={newItemText}
+          onChange={(e) => setNewItemText(e.target.value)}
         />
         <button>Add</button>
       </form>
