@@ -41,7 +41,7 @@ export default function Checklist({ userId }) {
                 key={item.id}
                 item={item}
                 onToggle={() => toggleItem(item.id)}
-                onDelete={() => deleteChecklistItem(userId, item.id)}
+                onDelete={() => removeItem(item.id)}
               />
             ))}
       </ul>
