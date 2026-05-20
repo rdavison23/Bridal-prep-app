@@ -1,6 +1,7 @@
 import ChecklistItem from './ChecklistItem';
 import useChecklist from '../../hooks/useChecklist';
 import './checklist.css';
+import { deleteChecklistItem } from '../../api/checklistApi';
 
 export default function Checklist({ userId }) {
   const {
@@ -11,6 +12,8 @@ export default function Checklist({ userId }) {
     newItemText,
     setNewItemText,
     error,
+    removeItem,
+    resetAll,
   } = useChecklist(userId);
   userId;
 
@@ -38,10 +41,13 @@ export default function Checklist({ userId }) {
                 key={item.id}
                 item={item}
                 onToggle={() => toggleItem(item.id)}
+                onDelete={() => deleteChecklistItem(userId, item.id)}
               />
             ))}
       </ul>
-
+      <button className="reset-btn" onClick={resetAll}>
+        Reset Checklist
+      </button>
       <form className="checklist-form" onSubmit={handleSubmit}>
         <input
           type="text"

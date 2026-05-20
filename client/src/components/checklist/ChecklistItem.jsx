@@ -1,4 +1,4 @@
-export default function ChecklistItem({ item, onToggle }) {
+export default function ChecklistItem({ item, onToggle, onDelete }) {
   return (
     <li className={`checklist-item ${item.is_completed ? 'completed' : ''}`}>
       <label>
@@ -9,6 +9,9 @@ export default function ChecklistItem({ item, onToggle }) {
         />
         {item.item_text}
       </label>
+      <button className="delete-btn" onClick={onDelete}>
+        X
+      </button>
     </li>
   );
 }
