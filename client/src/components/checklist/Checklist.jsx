@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import ChecklistItem from './ChecklistItem';
 import useChecklist from '../../hooks/useChecklist';
 import './checklist.css';
@@ -13,6 +12,9 @@ export default function Checklist({ userId }) {
     setNewItemText,
     error,
   } = useChecklist(userId);
+  userId;
+
+  console.log('Items:', items);
 
   if (loading) return <p>Loading checklist…</p>;
 
@@ -28,13 +30,16 @@ export default function Checklist({ userId }) {
       {error && <p className="error">{error}</p>}
 
       <ul className="checklist-list">
-        {items.map((item) => (
-          <ChecklistItem
-            key={item.id}
-            item={item}
-            onToggle={() => toggleItem(item.id)}
-          />
-        ))}
+        {Array.isArray(items) &&
+          items
+            .filter((item) => item && item.id)
+            .map((item) => (
+              <ChecklistItem
+                key={item.id}
+                item={item}
+                onToggle={() => toggleItem(item.id)}
+              />
+            ))}
       </ul>
 
       <form className="checklist-form" onSubmit={handleSubmit}>
