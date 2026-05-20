@@ -4,7 +4,6 @@ import {
   toggleChecklistItem,
   addChecklistItem,
 } from '../api/checklistApi';
-
 export default function useChecklist(userId) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
