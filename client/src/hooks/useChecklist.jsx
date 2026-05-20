@@ -3,6 +3,8 @@ import {
   getChecklist,
   toggleChecklistItem,
   addChecklistItem,
+  deleteChecklistItem,
+  resetChecklist,
 } from '../api/checklistApi';
 export default function useChecklist(userId) {
   const [items, setItems] = useState([]);
@@ -62,6 +64,28 @@ export default function useChecklist(userId) {
     }
   };
 
+  // DELETE item
+  const removeItem = async (itemId) => {
+    try {
+      await deleteChecklistItem(userId, itemId);
+      setItems((prev) => prev.filter((item) => item.id !== itemId));
+    } catch (err) {
+      console.error('Delete error:', err);
+      setError('Failed to delete item.');
+    }
+  };
+
+  //RESET item
+  const resetAll = async () => {
+    try {
+      const result = await resetChecklist(userId);
+      setItems(result.items);
+    } catch (err) {
+      console.error('Reset error', err);
+      setError('Failed to reset checklist.');
+    }
+  };
+
   return {
     items,
     loading,
@@ -70,5 +94,7 @@ export default function useChecklist(userId) {
     setNewItemText,
     addItem,
     toggleItem,
+    removeItem,
+    resetAll,
   };
 }
