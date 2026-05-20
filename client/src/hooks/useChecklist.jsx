@@ -80,6 +80,7 @@ export default function useChecklist(userId) {
     try {
       const result = await resetChecklist(userId);
       setItems(result.items);
+      window.location.reload();
     } catch (err) {
       console.error('Reset error', err);
       setError('Failed to reset checklist.');
