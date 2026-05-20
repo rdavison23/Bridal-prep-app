@@ -32,3 +32,25 @@ export const addChecklistItem = async (userId, item_text) => {
     throw new Error('Unable to add checklist item. Please try again.');
   }
 };
+
+export const deleteChecklistItem = async (userId, itemId) => {
+  try {
+    return await apiClient(`/api/checklist/${userId}/${itemId}`, {
+      method: 'DELETE',
+    });
+  } catch (err) {
+    console.error('Failed to delete checklist item:', err);
+    throw new Error('Unable to delete checklist item. Please try again.');
+  }
+};
+
+export const resetChecklist = async (userId) => {
+  try {
+    return await apiClient(`/api/checklist/${userId}/reset`, {
+      method: 'POST',
+    });
+  } catch (err) {
+    console.error('Failed to delete checklist item:', err);
+    throw new Error('Unable to delete checklist item. Please try again.');
+  }
+};
