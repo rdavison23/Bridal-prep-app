@@ -1,0 +1,212 @@
+/* === Typography === */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* === Color Tokens === */
+:root {
+  --clay: #c57a7a;
+  --clay-dark: #b56c6c;
+  --clay-soft: rgba(197, 122, 122, 0.12);
+  --clay-tint: rgba(197, 122, 122, 0.06);
+
+  --ivory: rgba(255, 247, 241, 0.75);
+  --mist: #f6f6f8;
+  --ink: #2c2c2c;
+  --beige: #dcc7a1;
+  --beige-soft: rgba(220, 199, 161, 0.22);
+}
+
+/* === Container === */
+.checklist-container {
+  max-width: 650px;
+  margin: 2.5rem auto;
+  padding: 2.2rem;
+  background: var(--ivory);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid var(--beige-soft);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  animation: fadeIn 0.4s ease;
+}
+
+/* === Heading === */
+.checklist-container h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  color: var(--ink);
+  margin-bottom: 1.6rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.checklist-container h2 em {
+  color: var(--clay);
+  font-style: italic;
+}
+
+/* === List === */
+.checklist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--mist);
+  border-radius: 16px;
+  border: 1px solid var(--beige-soft);
+  overflow: hidden;
+}
+
+/* === Checklist Item === */
+.checklist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid var(--beige-soft);
+  transition: background 0.25s ease, transform 0.15s ease;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  position: relative;
+}
+
+.checklist-item:hover {
+  background: var(--clay-tint);
+  transform: translateX(3px);
+}
+
+/* Completed accent stripe */
+.checklist-item.completed::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--clay);
+  border-radius: 0 3px 3px 0;
+  opacity: 0.7;
+}
+
+.checklist-item.completed label {
+  text-decoration: line-through;
+  color: #a0a0a0;
+}
+
+/* === Checkbox === */
+.checklist-item input[type='checkbox'] {
+  margin-right: 0.75rem;
+  transform: scale(1.3);
+  accent-color: var(--clay);
+}
+
+/* === Delete Button === */
+.delete-btn {
+  background: var(--clay-soft);
+  border: 1px solid rgba(197, 122, 122, 0.3);
+  color: var(--clay-dark);
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, color 0.2s ease;
+  opacity: 0;
+}
+
+.checklist-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background: rgba(197, 122, 122, 0.18);
+  color: var(--clay);
+}
+
+.delete-btn:active {
+  transform: scale(0.92);
+}
+
+/* === Add Item Form === */
+.checklist-form {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+.checklist-form input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--beige);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background: #faf7f3;
+  color: var(--ink);
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.checklist-form input:hover {
+  border-color: var(--clay);
+}
+
+.checklist-form input:focus {
+  border-color: var(--clay);
+  box-shadow: 0 0 0 3px rgba(197, 122, 122, 0.25);
+  background: white;
+}
+
+.checklist-form input::placeholder {
+  color: #9a9a9a;
+}
+
+/* === Add Button === */
+.checklist-form button {
+  padding: 0.8rem 1.3rem;
+  background: var(--clay);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.checklist-form button:hover {
+  background: var(--clay-dark);
+}
+
+.checklist-form button:active {
+  transform: scale(0.96);
+}
+
+/* === Reset Button === */
+.reset-btn {
+  margin-bottom: 1.2rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--clay-dark);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.reset-btn:hover {
+  background: var(--clay);
+}
+
+.reset-btn:active {
+  transform: scale(0.96);
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

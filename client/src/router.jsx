@@ -3,6 +3,7 @@ import QuizPage from './pages/QuizPage';
 import QuizResultsPage from './pages/QuizResultsPage';
 import CreateBudgetPage from './pages/CreateBudgetPage';
 import BudgetPage from './pages/BudgetPage';
+import ChecklistPage from './pages/ChecklistPage';
 
 export default function AppRouter() {
   return (
@@ -13,6 +14,7 @@ export default function AppRouter() {
         <Route path="/quiz/results" element={<QuizResultsPage />} />
         <Route path="/budget" element={<BudgetPage />} />
         <Route path="/create-budget" element={<CreateBudgetPage />} />
+        <Route path="/checklist" element={<ChecklistPage />} />
       </Routes>
     </BrowserRouter>
   );

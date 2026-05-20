@@ -10,6 +10,7 @@ export const getChecklistItems = async (req, res) => {
       'SELECT * FROM bridal_prep.checklist_items WHERE user_id = $1 ORDER BY id ASC',
       [userId]
     );
+    console.log('RAW DB ROWS:', JSON.stringify(result.rows, null, 2));
 
     // If user has no items, preload defaults
     if (result.rows.length === 0) {
@@ -27,16 +28,16 @@ export const getChecklistItems = async (req, res) => {
 // ADD new item
 export const addChecklistItem = async (req, res) => {
   const { userId } = req.params;
-  const { itemText } = req.body;
+  const { item_text } = req.body;
 
-  if (!itemText) {
+  if (!item_text) {
     return res.status(400).json({ error: 'Item text required' });
   }
 
   try {
     const result = await pool.query(
       'INSERT INTO bridal_prep.checklist_items (user_id, item_text) VALUES ($1, $2) RETURNING *',
-      [userId, itemText]
+      [userId, item_text]
     );
 
     res.json(result.rows[0]);
@@ -51,7 +52,7 @@ export const toggleChecklistItem = async (req, res) => {
   const { userId, id } = req.params;
 
   try {
-    const result = await db.query(
+    const result = await pool.query(
       `UPDATE bridal_prep.checklist_items
        SET is_completed = NOT is_completed
        WHERE id = $1 AND user_id = $2
@@ -75,7 +76,7 @@ export const deleteChecklistItem = async (req, res) => {
   const { userId, id } = req.params;
 
   try {
-    await db.query(
+    await pool.query(
       'DELETE FROM bridal_prep.checklist_items WHERE id = $1 AND user_id = $2',
       [id, userId]
     );
@@ -99,7 +100,7 @@ export const resetChecklist = async (req, res) => {
 
     const inserted = await preloadDefaults(userId);
 
-    res.json({ success: true, items: inserted });
+    res.json(inserted);
   } catch (err) {
     console.error('Error resetting checklist:', err);
     res.status(500).json({ error: 'Failed to reset checklist' });
@@ -115,6 +116,7 @@ const preloadDefaults = async (userId) => {
     )
   );
 
-  const results = await Promise.all(inserts);
-  return results.map((r) => r.rows[0]);
+  const settled = await Promise.allSettled(inserts);
+
+  return settled.filter((r) => r.status === 'fulfilled').map((r) => r.value[0]);
 };
