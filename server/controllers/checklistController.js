@@ -10,7 +10,6 @@ export const getChecklistItems = async (req, res) => {
       'SELECT * FROM bridal_prep.checklist_items WHERE user_id = $1 ORDER BY id ASC',
       [userId]
     );
-    console.log('RAW DB ROWS:', JSON.stringify(result.rows, null, 2));
 
     // If user has no items, preload defaults
     if (result.rows.length === 0) {
