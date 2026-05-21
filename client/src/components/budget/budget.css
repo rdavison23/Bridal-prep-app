@@ -1,0 +1,55 @@
+/* === Budget Page Container === */
+.budget-container {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  padding: 2.4rem;
+  background: rgba(255, 247, 241, 0.75); /* Ivory glass */
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  border: 1px solid rgba(220, 199, 161, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  animation: fadeIn 0.4s ease;
+}
+
+.budget-container h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 2.2rem;
+  color: #2c2c2c;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  letter-spacing: -0.5px;
+}
+
+/* === Budget Breakdown Card === */
+.budget-breakdown {
+  background: #f6f6f8;
+  border-radius: 18px;
+  padding: 1.6rem 1.8rem;
+  border: 1px solid rgba(220, 199, 161, 0.25);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.budget-breakdown h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #2c2c2c;
+}
+
+.breakdown-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 0.55rem 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(220, 199, 161, 0.18);
+}
+
+.breakdown-item:last-child {
+  border-bottom: none;
+}
+
+.breakdown-item strong {
+  color: #c57a7a;
+}
