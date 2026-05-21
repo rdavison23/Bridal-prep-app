@@ -1,0 +1,50 @@
+# Exported from Render on 2026-05-21T00:46:56Z
+version: "1"
+projects:
+- name: My project
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: bridal-prep-client
+      runtime: static
+      repo: https://github.com/rdavison23/Bridal-prep-app
+      envVars:
+      - key: VITE_API_BASE_URL
+        sync: false
+      buildCommand: npm install && npm run build
+      staticPublishPath: dist
+      routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+      autoDeployTrigger: commit
+      rootDir: client
+    - type: web
+      name: bridal-prep-api
+      runtime: node
+      repo: https://github.com/rdavison23/Bridal-prep-app
+      branch: phase-2
+      plan: free
+      envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: PORT
+        sync: false
+      - key: PEXELS_API_KEY
+        sync: false
+      region: ohio
+      buildCommand: npm install
+      startCommand: 'npm start '
+      autoDeployTrigger: commit
+      rootDir: server
+    databases:
+    - name: Bridal_pg
+      databaseName: bridal_prep
+      user: bridal_prep_user
+      plan: free
+      region: ohio
+      ipAllowList:
+      - source: 0.0.0.0/0
+        description: everywhere
+      postgresMajorVersion: "18"
