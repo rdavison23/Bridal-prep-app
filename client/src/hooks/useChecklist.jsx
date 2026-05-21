@@ -19,7 +19,6 @@ export default function useChecklist(userId) {
         const data = await getChecklist(userId);
         setItems(data);
       } catch (err) {
-        console.error('Checklist load error:', err);
         setError('Failed to load checklist.');
       } finally {
         setLoading(false);

@@ -17,8 +17,6 @@ export default function Checklist({ userId }) {
   } = useChecklist(userId);
   userId;
 
-  console.log('Items:', items);
-
   if (loading) return <p>Loading checklist…</p>;
 
   const handleSubmit = (e) => {
