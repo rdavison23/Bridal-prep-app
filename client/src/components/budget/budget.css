@@ -53,3 +53,81 @@
 .breakdown-item strong {
   color: #c57a7a;
 }
+
+/* === Create Budget Form Container === */
+.budget-form-container {
+  max-width: 650px;
+  margin: 2.5rem auto;
+  padding: 2.2rem;
+  background: rgba(255, 247, 241, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(220, 199, 161, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  animation: fadeIn 0.4s ease;
+}
+
+.budget-form-container h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: #2c2c2c;
+}
+
+/* === Form Fields === */
+.budget-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.budget-form-container label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.budget-form-container input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #dcc7a1;
+  border-radius: 12px;
+  background: #faf7f3;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.budget-form-container input:focus {
+  border-color: #c57a7a;
+  box-shadow: 0 0 0 3px rgba(197, 122, 122, 0.25);
+  outline: none;
+}
+
+/* == Buttons (Preview + Save) == */
+.budget-form-container button,
+.preview-card button {
+  padding: 0.8rem 1.3rem;
+  background: #c57a7a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.budget-form-container button:hover,
+.preview-card button:hover {
+  background: #b56c6c;
+}
+
+.budget-form-container button:active,
+.preview-card button:active {
+  transform: scale(0.96);
+}
