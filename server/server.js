@@ -10,12 +10,25 @@ import quizRoutes from './routes/quizRoutes.js';
 dotenv.config();
 
 const app = express();
-app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
-  })
-);
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://bridal-prep-client.onrender.com',
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS blocked: ${origin}`));
+    }
+  },
+  credentials: true,
+};
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/health', (req, res) => {
