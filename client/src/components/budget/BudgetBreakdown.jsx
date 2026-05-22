@@ -1,3 +1,4 @@
+import './budget.css';
 export default function BudgetBreakdown({ budget }) {
   if (!budget) return null;
 
