@@ -144,7 +144,7 @@ const confidenceGuides = [
       "Go get your dress. You're ready.",
     ],
     callout: 'There is no version of today where you fail.',
-    affirmation: "You're ready. Go get your dress. 💍",
+    affirmation: "You're ready. Go get your dress. ",
     nextId: null,
   },
 ];
