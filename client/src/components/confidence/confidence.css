@@ -248,3 +248,33 @@
   line-height: 1.8;
   margin: 0;
 }
+
+/* === Callout === */
+.confidence-callout {
+  background: #fff7f1;
+  border-left: 3px solid #c57a7a;
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.confidence-callout-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #2c2c2c;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* === Affirmation === */
+.confidence-affirmation {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: #c57a7a;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 0.5px solid #dcc7a1;
+  margin: 0;
+}
