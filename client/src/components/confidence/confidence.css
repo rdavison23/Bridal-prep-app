@@ -117,3 +117,104 @@
     align-items: flex-start;
   }
 }
+
+/* === Individual page === */
+.confidence-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.confidence-back {
+  background: none;
+  border: none;
+  color: #6b6b6b;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.confidence-back:hover {
+  color: #c57a7a;
+}
+
+.confidence-page-step {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #c57a7a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.confidence-page-title {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.confidence-page-opening {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid #dcc7a1;
+}
+
+/* === Pep talk letter === */
+.confidence-letter {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #fff7f1;
+  border-radius: 12px;
+  border: 0.5px solid #dcc7a1;
+}
+
+.confidence-letter-paragraph {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  color: #2c2c2c;
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+
+.confidence-letter-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* === Not found === */
+.confidence-not-found {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  color: #6b6b6b;
+}
+
+.confidence-not-found button {
+  margin-top: 1rem;
+  background: none;
+  border: 0.5px solid #c57a7a;
+  color: #c57a7a;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  transition: background 0.2s ease;
+}
+
+.confidence-not-found button:hover {
+  background: #fff7f1;
+}
