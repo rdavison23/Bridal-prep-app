@@ -218,3 +218,33 @@
 .confidence-not-found button:hover {
   background: #fff7f1;
 }
+
+/* === Content sections === */
+.confidence-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.confidence-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.confidence-section-heading {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.confidence-section-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #4a4a4a;
+  line-height: 1.8;
+  margin: 0;
+}
