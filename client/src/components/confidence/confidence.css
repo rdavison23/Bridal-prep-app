@@ -1,0 +1,36 @@
+/* === Hub page === */
+.confidence-hub {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.confidence-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.confidence-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c57a7a;
+  margin-bottom: 0.5rem;
+}
+
+.confidence-hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin-bottom: 0.75rem;
+}
+
+.confidence-hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
