@@ -278,3 +278,45 @@
   border-top: 0.5px solid #dcc7a1;
   margin: 0;
 }
+
+/* === Next button === */
+.confidence-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: #fff7f1;
+  border: 0.5px solid #dcc7a1;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.confidence-next:hover {
+  border-color: #c57a7a;
+  transform: translateY(-2px);
+}
+
+.confidence-next div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.confidence-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #6b6b6b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.confidence-next-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  color: #c57a7a;
+  font-weight: 500;
+}
