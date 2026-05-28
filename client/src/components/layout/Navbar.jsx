@@ -17,7 +17,7 @@ function Navbar() {
           Quiz
         </NavLink>
         <NavLink
-          to="/budget"
+          to="/create-budget"
           className={({ isActive }) =>
             isActive ? 'navbar-link active' : 'navbar-link'
           }>
