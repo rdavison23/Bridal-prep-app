@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
 import QuizPage from './pages/QuizPage';
 import QuizResultsPage from './pages/QuizResultsPage';
 import CreateBudgetPage from './pages/CreateBudgetPage';
@@ -11,6 +12,7 @@ import HomeDashboard from './pages/HomeDashboard';
 export default function AppRouter() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<QuizPage />} />
         <Route path="/home" element={<HomeDashboard />} />
