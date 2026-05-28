@@ -6,12 +6,14 @@ import BudgetPage from './pages/BudgetPage';
 import ChecklistPage from './pages/ChecklistPage';
 import ConfidenceSection from './components/confidence/ConfidenceSection';
 import ConfidencePage from './components/confidence/ConfidencePage';
+import HomeDashboard from './pages/HomeDashboard';
 
 export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<QuizPage />} />
+        <Route path="/home" element={<HomeDashboard />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz/results" element={<QuizResultsPage />} />
         <Route path="/budget" element={<BudgetPage />} />
