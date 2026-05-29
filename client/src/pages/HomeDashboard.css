@@ -63,6 +63,7 @@
   width: fit-content;
   margin-top: 0.5rem;
   transition: background 0.2s ease, transform 0.2s ease;
+  align-self: flex-end;
 }
 
 .dashboard-cta:hover {
