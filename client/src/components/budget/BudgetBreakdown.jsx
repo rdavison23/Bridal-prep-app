@@ -21,10 +21,6 @@ export default function BudgetBreakdown({ budget }) {
       <div className="breakdown-item">
         <strong>Final Estimate:</strong> ${budget.finalEstimate}
       </div>
-
-      <div className="breakdown-item">
-        <strong>Created:</strong> {new Date(budget.createdAt).toLocaleString()}
-      </div>
     </div>
   );
 }
