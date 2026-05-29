@@ -30,7 +30,8 @@ function ConfidenceSection() {
             <h2 className="confidence-card-title">{guide.title}</h2>
             <p className="confidence-card-subtitle">{guide.subtitle}</p>
             <span className="confidence-card-cta">
-              {guide.isPepTalk ? 'Read the letter' : 'Read guide'} →
+              {guide.isPepTalk ? 'Read the letter' : 'Read guide'}
+              <span aria-hidden="true"> →</span>
             </span>
           </button>
         ))}
