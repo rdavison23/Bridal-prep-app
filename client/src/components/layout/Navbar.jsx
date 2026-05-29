@@ -3,8 +3,9 @@ import './navbar.css';
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <NavLink to="/home" className="navbar-logo">
+    <nav className="navbar" aria-label="Main navigation">
+      {/* aria-label added to logo link */}
+      <NavLink to="/home" className="navbar-logo" aria-label="Bridal Prep home">
         Bridal Prep
       </NavLink>
 
