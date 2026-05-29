@@ -15,14 +15,15 @@ function HomeDashboard() {
             appointment ready.
           </p>
           <button className="dashboard-cta" onClick={() => navigate('/quiz')}>
-            Get started →
+            Get started <span aria-hidden="true">→</span>
           </button>
         </div>
 
         <div className="dashboard-hero-image">
           <img
             src="https://images.pexels.com/photos/20352746/pexels-photo-20352746.jpeg"
-            alt="Bride in a beautiful wedding gown"
+            alt=""
+            role="presentation"
           />
         </div>
       </div>
