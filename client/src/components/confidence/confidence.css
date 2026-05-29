@@ -1,0 +1,322 @@
+/* === Hub page === */
+.confidence-hub {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.confidence-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.confidence-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c57a7a;
+  margin-bottom: 0.5rem;
+}
+
+.confidence-hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin-bottom: 0.75rem;
+}
+
+.confidence-hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+/* === Cards === */
+.confidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.confidence-card {
+  background: #fff7f1;
+  border: 0.5px solid #dcc7a1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.confidence-card:hover {
+  border-color: #c57a7a;
+  transform: translateY(-2px);
+}
+
+.confidence-card-step {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #c57a7a;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.confidence-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.confidence-card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #6b6b6b;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.confidence-card-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #c57a7a;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* === Pep talk card variant === */
+.confidence-card--pep {
+  grid-column: 1 / -1;
+  background: #f6f0e8;
+  border-color: #dcc7a1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confidence-card--pep .confidence-card-title {
+  font-size: 1.2rem;
+}
+
+/* === Mobile === */
+@media (max-width: 600px) {
+  .confidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .confidence-card--pep {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* === Individual page === */
+.confidence-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.confidence-back {
+  background: none;
+  border: none;
+  color: #6b6b6b;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.confidence-back:hover {
+  color: #c57a7a;
+}
+
+.confidence-page-step {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #c57a7a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.confidence-page-title {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.confidence-page-opening {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6b6b6b;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid #dcc7a1;
+}
+
+/* === Pep talk letter === */
+.confidence-letter {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #fff7f1;
+  border-radius: 12px;
+  border: 0.5px solid #dcc7a1;
+}
+
+.confidence-letter-paragraph {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  color: #2c2c2c;
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+
+.confidence-letter-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* === Not found === */
+.confidence-not-found {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  color: #6b6b6b;
+}
+
+.confidence-not-found button {
+  margin-top: 1rem;
+  background: none;
+  border: 0.5px solid #c57a7a;
+  color: #c57a7a;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  transition: background 0.2s ease;
+}
+
+.confidence-not-found button:hover {
+  background: #fff7f1;
+}
+
+/* === Content sections === */
+.confidence-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.confidence-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.confidence-section-heading {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.confidence-section-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #4a4a4a;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* === Callout === */
+.confidence-callout {
+  background: #fff7f1;
+  border-left: 3px solid #c57a7a;
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.confidence-callout-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #2c2c2c;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* === Affirmation === */
+.confidence-affirmation {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: #c57a7a;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 0.5px solid #dcc7a1;
+  margin: 0;
+}
+
+/* === Next button === */
+.confidence-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: #fff7f1;
+  border: 0.5px solid #dcc7a1;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.confidence-next:hover {
+  border-color: #c57a7a;
+  transform: translateY(-2px);
+}
+
+.confidence-next div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.confidence-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #6b6b6b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.confidence-next-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  color: #c57a7a;
+  font-weight: 500;
+}
