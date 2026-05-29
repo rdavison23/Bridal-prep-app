@@ -1,5 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './budget.css';
+
 export default function BudgetBreakdown({ budget }) {
+  const navigate = useNavigate();
+
   if (!budget) return null;
 
   return (
@@ -21,6 +25,12 @@ export default function BudgetBreakdown({ budget }) {
       <div className="breakdown-item">
         <strong>Final Estimate:</strong> ${budget.finalEstimate}
       </div>
+
+      <button
+        className="budget-checklist-btn"
+        onClick={() => navigate('/checklist')}>
+        Next: Prep Your Checklist <span aria-hidden="true">→</span>
+      </button>
     </div>
   );
 }
