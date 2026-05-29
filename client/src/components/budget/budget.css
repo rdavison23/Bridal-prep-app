@@ -187,3 +187,13 @@
   text-align: center;
   transition: background 0.2s ease, transform 0.2s ease;
 }
+
+.budget-checklist-btn:hover {
+  background: #b36b6b;
+  transform: translateY(-2px);
+}
+
+.budget-checklist-btn:active {
+  transform: scale(0.98);
+  background: #a05f5f;
+}
