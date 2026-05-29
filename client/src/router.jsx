@@ -14,7 +14,7 @@ export default function AppRouter() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<QuizPage />} />
+        <Route path="/" element={<HomeDashboard />} />
         <Route path="/home" element={<HomeDashboard />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz/results" element={<QuizResultsPage />} />
