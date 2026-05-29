@@ -20,7 +20,7 @@ function ConfidenceSection() {
 
       <div className="confidence-grid">
         {confidenceGuides.map((guide) => (
-          <div
+          <button
             key={guide.id}
             className={`confidence-card ${
               guide.isPepTalk ? 'confidence-card--pep' : ''
@@ -30,9 +30,10 @@ function ConfidenceSection() {
             <h2 className="confidence-card-title">{guide.title}</h2>
             <p className="confidence-card-subtitle">{guide.subtitle}</p>
             <span className="confidence-card-cta">
-              {guide.isPepTalk ? 'Read the letter' : 'Read guide'} →
+              {guide.isPepTalk ? 'Read the letter' : 'Read guide'}
+              <span aria-hidden="true"> →</span>
             </span>
-          </div>
+          </button>
         ))}
       </div>
     </div>

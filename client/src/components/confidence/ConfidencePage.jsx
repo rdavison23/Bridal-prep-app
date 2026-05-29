@@ -26,8 +26,9 @@ function ConfidencePage() {
     <div className="confidence-page">
       <button
         className="confidence-back"
-        onClick={() => navigate('/confidence')}>
-        ← Back to all topics
+        onClick={() => navigate('/confidence')}
+        aria-label="Back to all topics">
+        <span aria-hidden="true">← </span>Back to all topics
       </button>
 
       <p className="confidence-page-step">Guide {guide.step} of 05</p>
@@ -67,10 +68,14 @@ function ConfidencePage() {
       {nextGuide && (
         <button
           className="confidence-next"
-          onClick={() => navigate(nextGuide.route)}>
+          onClick={() => navigate(nextGuide.route)}
+          aria-label={`Go to next guide: ${nextGuide.title}`}>
           <div>
             <span className="confidence-next-label">Up next</span>
-            <span className="confidence-next-title">{nextGuide.title} →</span>
+            <span className="confidence-next-title">
+              {nextGuide.title}
+              <span aria-hidden="true"> →</span>
+            </span>
           </div>
         </button>
       )}
