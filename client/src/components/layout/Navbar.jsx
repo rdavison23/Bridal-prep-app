@@ -4,7 +4,6 @@ import './navbar.css';
 function Navbar() {
   return (
     <nav className="navbar" aria-label="Main navigation">
-      {/* aria-label added to logo link */}
       <NavLink to="/home" className="navbar-logo" aria-label="Bridal Prep home">
         Bridal Prep
       </NavLink>
@@ -25,18 +24,19 @@ function Navbar() {
           Budget
         </NavLink>
         <NavLink
-          to="/confidence"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Confidence
-        </NavLink>
-        <NavLink
           to="/checklist"
           className={({ isActive }) =>
             isActive ? 'navbar-link active' : 'navbar-link'
           }>
           Checklist
+        </NavLink>
+
+        <NavLink
+          to="/confidence"
+          className={({ isActive }) =>
+            isActive ? 'navbar-link active' : 'navbar-link'
+          }>
+          Confidence
         </NavLink>
       </div>
     </nav>
