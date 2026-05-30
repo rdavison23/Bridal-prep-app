@@ -2,16 +2,17 @@
 
 [Redu's Final Project Doc](https://docs.google.com/document/d/1YIxb0eu9zeemv84UHcdmy3Q48qa55gNTxsJOdmFna_w/edit?tab=t.6f7ymtycmd16)
 
-Bridal Prep is a PERN-stack web app designed to reduce overwhelm for brides by offering a guided style quiz, budget clarity, and appointment preparation tools. The goal is to turn "I don't know where to start" into "I'm ready."
+Bridal Prep is a PERN-stack web app designed to reduce overwhelm for brides by offering a guided style quiz, budget clarity, appointment preparation tools, and a confidence center. The goal is to turn "I don't know where to start" into "I'm ready."
 
 ## Features (MVP)
 
+- Home dashboard with hero layout
+- Global navbar with active link states
 - Style Discovery Quiz
-- Style Profile (placeholder logic implemented)
-- Bridal image recommendations via Pexels API
+- Style Profile with Pinterest-style masonry image grid via Pexels API
 - Budget Guide + Hidden Cost Calculator
-- Appointment Prep Checklist
-- Confidence Boost section (static content)
+- Appointment Prep Checklist with progress indicator and CRUD
+- Confidence Boost section with 5 guided articles and sequential navigation
 
 ## Tech Stack
 
@@ -130,15 +131,17 @@ npm test
 
 ### Pages
 
-| Route         | Page       |
-| ------------- | ---------- |
-| `/`           | Landing    |
-| `/dashboard`  | Dashboard  |
-| `/quiz`       | Quiz       |
-| `/results`    | Results    |
-| `/budget`     | Budget     |
-| `/checklist`  | Checklist  |
-| `/confidence` | Confidence |
+| Route                  | Page                        |
+| ---------------------- | --------------------------- |
+| `/`                    | Home Dashboard              |
+| `/home`                | Home Dashboard              |
+| `/quiz`                | Style Quiz                  |
+| `/quiz/results`        | Quiz Results + Mood Board   |
+| `/create-budget`       | Budget Guide                |
+| `/budget`              | Budget Summary              |
+| `/checklist`           | Appointment Prep Checklist  |
+| `/confidence`          | Confidence Hub              |
+| `/confidence/:guideId` | Individual Confidence Guide |
 
 ### Quiz Flow
 
@@ -146,20 +149,46 @@ npm test
 - `QuizQuestion` component with option-selection UI
 - Local state for current question, selected answers, and navigation
 - Sends `answers` + `quiz_version` to the backend
-- `QuizResults` component receives backend data via React Router state
+- `QuizResults` displays style profile with sticky banner and Pinterest-style masonry image grid
 
 ### Checklist Feature
 
-- `Checklist.jsx` + `ChecklistItem.jsx` — UI components
+- `Checklist.jsx` + `ChecklistItem.jsx` — UI components with progress indicator
 - `ChecklistPage.jsx` — page wrapper and routing entry
 - `useChecklist.js` — data fetching, optimistic toggle, and item creation
 - `checklistApi.js` — API integration layer
+- Pre-loaded with 6 essential default items
+- Full CRUD — add, toggle, delete, reset
 
 ### Budget Feature
 
 - `BudgetGuide.jsx` + `BudgetBreakdown.jsx` — display components
 - `BudgetPage.jsx` — page wrapper and routing entry
 - `budgetApi.js` — API integration layer
+- "Prep Your Checklist" CTA navigates bride to next step
+
+### Confidence Feature
+
+- `ConfidenceSection.jsx` — hub page with 5 topic cards
+- `ConfidencePage.jsx` — individual guide page with sequential "Up next" navigation
+- `confidenceData.js` — static content data file with all 5 guides
+- Covers: what to expect, how to decide, handling opinions, calming nerves, pep talk
+- Fully accessible — semantic buttons, aria-labels, aria-hidden decorative elements
+
+### Home Dashboard + Navbar
+
+- `HomeDashboard.jsx` — split layout hero with bridal image and Get Started CTA
+- `Navbar.jsx` — sticky global navbar with active link states and aria-labels
+- Accessible navigation with `aria-label="Main navigation"`
+
+## Accessibility
+
+A full accessibility sweep was completed across all major components:
+
+- Semantic `<button>` elements for all interactive cards
+- `aria-label` on all navigation and action buttons
+- Decorative images marked with `alt=""` and `role="presentation"`
+- Decorative arrows wrapped in `aria-hidden="true"`
 
 ## Database Schema
 
@@ -194,23 +223,3 @@ npm test
 - FE ↔ BE connection tested
 - CORS configured
 - Pexels API key tested with sample calls
-
-## Open the Style Quiz
-
-Navigate to:http://localhost:5173/quiz
-
-![alt text](<Screenshot 2026-05-15 at 17.01.14.png>)
-![alt text](<Screenshot 2026-05-15 at 17.02.36.png>)
-
-## Open the create budget
-
-Navigate to:http://localhost:5173/create-budget
-
-![alt text](<Screenshot 2026-05-15 at 17.04.16.png>)
-![alt text](<Screenshot 2026-05-15 at 17.04.51.png>)
-
-## Open the checklist
-
-Navigate to: http://localhost:5173/checklist
-
-![alt text](<Screenshot 2026-05-15 at 17.06.16.png>)
