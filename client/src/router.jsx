@@ -8,6 +8,8 @@ import ChecklistPage from './pages/ChecklistPage';
 import ConfidenceSection from './components/confidence/ConfidenceSection';
 import ConfidencePage from './components/confidence/ConfidencePage';
 import HomeDashboard from './pages/HomeDashboard';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
 
 export default function AppRouter() {
   return (
@@ -23,6 +25,8 @@ export default function AppRouter() {
         <Route path="/checklist" element={<ChecklistPage />} />
         <Route path="/confidence" element={<ConfidenceSection />} />
         <Route path="/confidence/:guideId" element={<ConfidencePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
