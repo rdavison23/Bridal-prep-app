@@ -14,7 +14,7 @@ function HomeDashboard() {
             Discover your style, plan your budget, and walk into your
             appointment ready.
           </p>
-          <button className="dashboard-cta" onClick={() => navigate('/quiz')}>
+          <button className="dashboard-cta" onClick={() => navigate('/login')}>
             Get started <span aria-hidden="true">→</span>
           </button>
         </div>

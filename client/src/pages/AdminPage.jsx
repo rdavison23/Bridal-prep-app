@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAdminUsers, deleteAdminUser } from "../api/adminApi";
+import Footer from "../components/layout/Footer";
 const sampleUsers = [
     {
         id: 1, email: "test1@test.com", created_at: "2026-05-05"
@@ -64,38 +65,44 @@ const AdminPage = () => {
     { loading && <p>Loading...</p> }
     { error && <p style={{ color: "red" }}>{error}</p> }
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-        }}>
-            <div>
-                <h1>User Management</h1>
-                <p>View and manage registered users.</p>
-            </div>
+        <div >
             <div style={{
+                minHeight: "95vh",
                 display: "flex",
                 flexDirection: "column",
-                gap: "0.5rem",
-
+                alignItems: "center"
             }}>
-                {users && users.map((u) => (
-                    <div className="user-card" key={u.id}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "2rem",
-                        }}>
-                        <div>{u.id}</div>
-                        <div>{u.email}</div>
-                        <div>{u.created_at}</div>
+                <div>
+                    <h1>User Management</h1>
+                    <p>View and manage registered users.</p>
+                </div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.5rem",
 
-                        <button
-                            type="button"
-                            onClick={() => handleDelete(u.id)}>Delete</button>
-                    </div>
-                ))}
+                }}>
+                    {users && users.map((u) => (
+                        <div className="user-card" key={u.id}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "2rem",
+                            }}>
+                            <div>{u.id}</div>
+                            <div>{u.email}</div>
+                            <div>{u.created_at}</div>
+
+                            <button
+                                type="button"
+                                onClick={() => handleDelete(u.id)}>Delete</button>
+                        </div>
+                    ))}
+                </div>
+
             </div>
+
+            <Footer />
         </div >
 
     )
