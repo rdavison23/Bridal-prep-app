@@ -27,5 +27,9 @@ export async function loginUser(data) {
 }
 
 export const getMe = async (token) => {
-  return apiClient('/api/auth/me', {});
+  return apiClient('/api/auth/me', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
