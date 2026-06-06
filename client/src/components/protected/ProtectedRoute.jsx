@@ -1,5 +1,12 @@
-const ProtectedRoute = () => {
+import { useContext } from 'react'
+import { UserContext } from '../context/UserContext'
 
+const ProtectedRoute = () => {
+    const auth = useContext(UserContext);
+
+    if (!auth) {
+        return null;
+    }
 }
 
 export default ProtectedRoute;
