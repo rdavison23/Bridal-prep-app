@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+    validateEmail,
+    validatePassword,
+    validateUsername,
+    validateConfirmPassword
+} from "../../utils/checkValidation";
 import "./AuthForm.css"
+
 const AuthForm = ({ mode, onSubmit }) => {
-    const initialData = mode === "login" ?
+    const initialData = mode === "signup" ?
         {
             username: "",
             email: "",
@@ -27,9 +34,43 @@ const AuthForm = ({ mode, onSubmit }) => {
 
     const handSubmit = async (e) => {
         e.preventDefault();
-        if (mode === "signup" && formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match");
-            return;
+        if (mode === "signup") {
+            // check user name
+            const usernameError = validateUsername(formData.username);
+            if (usernameError) {
+                setError(usernameError);
+                return;
+            }
+            const emailError = validateEmail(formData.email);
+            if (emailError) {
+                setError(emailError);
+                return;
+            }
+
+            const passwordError = validatePassword(formData.password);
+            if (passwordError) {
+                setError(passwordError);
+                return;
+            }
+
+            const conformPasswordError = validateConfirmPassword(formData.password, formData.confirmPassword);
+            if (conformPasswordError) {
+                setError(conformPasswordError);
+                return;
+            }
+
+        } else {
+            const emailError = validateEmail(formData.email);
+            if (emailError) {
+                setError(emailError);
+                return;
+            }
+            const passwordError = validatePassword(formData.password);
+            if (passwordError) {
+                setError(passwordError);
+                return;
+            }
+
         }
         await onSubmit(formData);
     }
