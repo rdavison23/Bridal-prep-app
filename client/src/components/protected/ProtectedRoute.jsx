@@ -7,6 +7,8 @@ const ProtectedRoute = () => {
     if (!auth) {
         return null;
     }
+
+    const { user, loading } = auth;
 }
 
 export default ProtectedRoute;
