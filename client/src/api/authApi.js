@@ -25,3 +25,7 @@ export async function loginUser(data) {
     throw new Error('Unable to Log in. Please try again.');
   }
 }
+
+export const getMe = async (token) => {
+  return apiClient('/api/auth/me', {});
+};
