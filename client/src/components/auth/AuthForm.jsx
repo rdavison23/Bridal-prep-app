@@ -1,11 +1,44 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AuthForm.css"
 const AuthForm = ({ mode, onSubmit }) => {
+    const initialData = mode === "login" ?
+        {
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
+        } :
+        {
+            email: "",
+            password: "",
+        }
+
+    const [formData, setFormData] = useState(initialData);
+    const [error, setError] = useState("");
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value
+        }))
+    }
+
+    const handSubmit = async (e) => {
+        e.preventDefault();
+        if (mode === "signup" && formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+        await onSubmit(formData);
+    }
+
     return (
         <div className="auth-form">
             <h1> Welcome to Bridal Prep</h1>
             <form
-                onSubmit={onSubmit}>
+                onSubmit={handSubmit}>
                 {mode === "signup" &&
                     <div className="form-div">
                         <label htmlFor="username">
@@ -16,6 +49,8 @@ const AuthForm = ({ mode, onSubmit }) => {
                             name="username"
                             type="text"
                             placeholder="Enter your username"
+                            value={formData.username}
+                            onChange={handleChange}
                         />
                     </div>
                 }
@@ -29,6 +64,8 @@ const AuthForm = ({ mode, onSubmit }) => {
                         name="email"
                         type="email"
                         placeholder="Enter your email"
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -42,6 +79,8 @@ const AuthForm = ({ mode, onSubmit }) => {
                         name="password"
                         type="password"
                         placeholder="Set your password"
+                        value={formData.password}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -54,7 +93,9 @@ const AuthForm = ({ mode, onSubmit }) => {
                         id="confirmPassword"
                         name="confirmPassword"
                         type="password"
-                        placeholder="please enter a username"
+                        placeholder="please re-enter password"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
                         required
                     />
                 </div>}
@@ -84,6 +125,8 @@ const AuthForm = ({ mode, onSubmit }) => {
                         <button>Login in</button>
                     </div>
                 }
+
+                {error && <p className="error">{error}</p>}
             </form >
         </div >
 

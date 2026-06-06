@@ -1,9 +1,12 @@
 import AuthForm from "../components/auth/AuthForm";
-
+import { signupUser } from "../api/authApi";
 const SignUpPage = () => {
-    const handleSignup = async () => {
-        console.log("trying to signup")
+    const handleSignup = async (formData) => {
+        console.log(formData);
+
+        await signupUser(formData);
     }
+
     return (
         <div>
             <AuthForm
