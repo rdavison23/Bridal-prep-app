@@ -10,6 +10,7 @@ import ConfidencePage from './components/confidence/ConfidencePage';
 import HomeDashboard from './pages/HomeDashboard';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
+import AdminPage from './pages/AdminPage';
 
 export default function AppRouter() {
   return (
@@ -27,6 +28,7 @@ export default function AppRouter() {
         <Route path="/confidence/:guideId" element={<ConfidencePage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </BrowserRouter>
   );
