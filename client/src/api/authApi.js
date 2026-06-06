@@ -3,7 +3,7 @@ import apiClient from './apiClient';
 // POST /api/signup 
 export async function signupUser(data) {
     try {
-        return apiClient('/api/signup', {
+        return apiClient('/api/auth/signup', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -16,7 +16,7 @@ export async function signupUser(data) {
 // POST /api/login 
 export async function loginUser(data) {
     try {
-        return apiClient('/api/login', {
+        return apiClient('/api/auth/login', {
             method: 'POST',
             body: JSON.stringify(data),
         });
