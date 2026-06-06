@@ -112,3 +112,10 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Something went wrong. Please try again' });
   }
 });
+
+//POST /api/auth/logout
+router.post('logout', (req, res) => {
+  res.json({ message: 'logged out succesfully' });
+});
+
+export default router;
