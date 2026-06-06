@@ -11,6 +11,7 @@ import HomeDashboard from './pages/HomeDashboard';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
+import ProtectedRoute from './components/protected/ProtectedRoute';
 
 export default function AppRouter() {
   return (
@@ -18,17 +19,19 @@ export default function AppRouter() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomeDashboard />} />
-        <Route path="/home" element={<HomeDashboard />} />
-        <Route path="/quiz" element={<QuizPage />} />
-        <Route path="/quiz/results" element={<QuizResultsPage />} />
-        <Route path="/budget" element={<BudgetPage />} />
-        <Route path="/create-budget" element={<CreateBudgetPage />} />
-        <Route path="/checklist" element={<ChecklistPage />} />
-        <Route path="/confidence" element={<ConfidenceSection />} />
-        <Route path="/confidence/:guideId" element={<ConfidencePage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<HomeDashboard />} />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz/results" element={<QuizResultsPage />} />
+          <Route path="/budget" element={<BudgetPage />} />
+          <Route path="/create-budget" element={<CreateBudgetPage />} />
+          <Route path="/checklist" element={<ChecklistPage />} />
+          <Route path="/confidence" element={<ConfidenceSection />} />
+          <Route path="/confidence/:guideId" element={<ConfidencePage />} />
+          <Route path="/admin" element={<AdminPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
