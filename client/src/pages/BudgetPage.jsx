@@ -1,4 +1,5 @@
 import useBudget from '../hooks/useBudget';
+import Footer from '../components/layout/Footer';
 import BudgetBreakdown from '../components/budget/BudgetBreakdown';
 
 export default function BudgetPage() {
@@ -9,9 +10,13 @@ export default function BudgetPage() {
   if (!budget) return <p>No budget found. Create one to get started!</p>;
 
   return (
-    <div className="budget-container">
-      <h1>Your Budget Summary</h1>
-      <BudgetBreakdown budget={budget} />
+    <div>
+      <div className="budget-container">
+        <h1>Your Budget Summary</h1>
+        <BudgetBreakdown budget={budget} />
+      </div>
+      <Footer />
     </div>
+
   );
 }
