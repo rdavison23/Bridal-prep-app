@@ -11,7 +11,7 @@ import "./AuthForm.css"
 const AuthForm = ({ mode, onSubmit }) => {
     const initialData = mode === "signup" ?
         {
-            username: "",
+            name: "",
             email: "",
             password: "",
             confirmPassword: ""
@@ -32,11 +32,11 @@ const AuthForm = ({ mode, onSubmit }) => {
         }))
     }
 
-    const handSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (mode === "signup") {
             // check user name
-            const usernameError = validateUsername(formData.username);
+            const usernameError = validateUsername(formData.name);
             if (usernameError) {
                 setError(usernameError);
                 return;
@@ -79,18 +79,18 @@ const AuthForm = ({ mode, onSubmit }) => {
         <div className="auth-form">
             <h1> Welcome to Bridal Prep</h1>
             <form
-                onSubmit={handSubmit}>
+                onSubmit={handleSubmit}>
                 {mode === "signup" &&
                     <div className="form-div">
-                        <label htmlFor="username">
-                            Username
+                        <label htmlFor="name">
+                            Name
                         </label>
                         <input
-                            id="username"
-                            name="username"
+                            id="name"
+                            name="name"
                             type="text"
-                            placeholder="Enter your username"
-                            value={formData.username}
+                            placeholder="Enter your name"
+                            value={formData.name}
                             onChange={handleChange}
                         />
                     </div>
