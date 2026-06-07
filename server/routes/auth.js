@@ -131,7 +131,9 @@ router.get('/me', async(req, res) => {
   }
 
   try {
-    
+    const token = header.slice(7);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
   } catch (error) {
     console.error('Error! Could not get user.');
     res.status(500).json({ error: 'Error! Could not get user.' });
