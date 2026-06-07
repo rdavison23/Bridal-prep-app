@@ -28,8 +28,8 @@ const UserProvider = ({ children }) => {
             }
 
             try {
-                const response = await getMe(token);
-                setUser(response.data.user);
+                const data = await getMe(token);
+                setUser(data.user);
             } catch (error) {
                 logout();
                 console.error(error);
