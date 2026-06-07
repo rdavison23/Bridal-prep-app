@@ -122,4 +122,14 @@ router.post('/logout', (req, res) => {
   res.json({ message: 'logged out succesfully' });
 });
 
+//GET /api/auth/me
+router.get('/me', async(req, res) => {
+  try {
+    
+  } catch (error) {
+    console.error('Error! Could not get user.');
+    res.status(500).json({ error: 'Error! Could not get user.' });
+  }
+});
+
 export default router;
