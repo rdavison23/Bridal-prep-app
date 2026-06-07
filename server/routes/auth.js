@@ -124,6 +124,12 @@ router.post('/logout', (req, res) => {
 
 //GET /api/auth/me
 router.get('/me', async(req, res) => {
+  const header = req.headers.authorization;
+
+  if (!header) {
+    return res.status(401).json({ error: 'Missing authorization header.' });
+  }
+
   try {
     
   } catch (error) {
