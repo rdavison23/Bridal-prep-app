@@ -122,4 +122,36 @@ router.post('/logout', (req, res) => {
   res.json({ message: 'logged out succesfully' });
 });
 
+//GET /api/auth/me
+router.get('/me', async(req, res) => {
+  const header = req.headers.authorization;
+
+  if (!header) {
+    return res.status(401).json({ error: 'Missing authorization header.' });
+  }
+
+  try {
+    if (!header.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Invalid Bearer token' });
+    };
+    
+    const token = header.slice(7);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const result = await pool.query(
+        `SELECT id, name, email, role FROM bridal_prep.users WHERE id = $1`,
+        [decoded.userId]
+    );
+
+    if (result.rows.length === 0) {
+        return res.status(404).json({ error: 'User could not be found.' });
+    };
+
+    res.status(200).json({ user: result.rows[0] });
+  } catch (error) {
+    console.error('Error! Could not get user.');
+    res.status(500).json({ error: 'Error! Could not get user.' });
+  }
+});
+
 export default router;
