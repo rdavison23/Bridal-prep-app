@@ -131,6 +131,10 @@ router.get('/me', async(req, res) => {
   }
 
   try {
+    if (!header.startsWith('Bearer ') {
+      return res.status(401).json({ error: 'Invalid Bearer token' });
+    };
+    
     const token = header.slice(7);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
