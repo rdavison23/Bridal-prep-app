@@ -6,6 +6,10 @@ import './navbar.css';
 function Navbar() {
   const { user, loading, logout } = useContext(UserContext);
 
+  if (loading) {
+    return null;
+  }
+
   return (
     <nav className="navbar" aria-label="Main navigation">
       <NavLink to="/home" className="navbar-logo" aria-label="Bridal Prep home">
