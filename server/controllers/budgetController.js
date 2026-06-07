@@ -18,7 +18,7 @@ export async function previewBudget(req, res) {
 export async function createBudget(req, res) {
   try {
     const userId = req.user.id;
-    const { idealBudget, maxBudget } = req.body; // default to 1 until auth is implemented
+    const { idealBudget, maxBudget } = req.body;
 
     const calc = calculateBudget({ idealBudget, maxBudget });
 
@@ -57,7 +57,7 @@ export async function createBudget(req, res) {
 
 export async function getLatestBudget(req, res) {
   try {
-    const userId = req.user?.id; // default to 1 until auth is implemented
+    const userId = req.user?.id;
 
     const query = `
       SELECT
