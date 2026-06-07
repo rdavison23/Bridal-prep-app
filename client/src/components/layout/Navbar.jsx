@@ -9,43 +9,47 @@ function Navbar() {
       </NavLink>
 
       <div className="navbar-links">
-        <NavLink
-          to="/quiz"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Quiz
-        </NavLink>
-        <NavLink
-          to="/create-budget"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Budget
-        </NavLink>
-        <NavLink
-          to="/checklist"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Checklist
-        </NavLink>
+        {user ? (
+          <>
+            <NavLink
+              to="/quiz"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Quiz
+            </NavLink>
+            <NavLink
+              to="/create-budget"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Budget
+            </NavLink>
+            <NavLink
+              to="/checklist"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Checklist
+            </NavLink>
 
-        <NavLink
-          to="/confidence"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Confidence
-        </NavLink>
-
-        <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Login
-        </NavLink>
+            <NavLink
+              to="/confidence"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Confidence
+            </NavLink>
+          </>
+        ) : (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? 'navbar-link active' : 'navbar-link'
+            }>
+            Login
+          </NavLink>
+        )}
       </div>
     </nav>
   );
