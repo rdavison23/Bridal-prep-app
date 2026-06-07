@@ -224,6 +224,86 @@ A full accessibility sweep was completed across all major components:
 - CORS configured
 - Pexels API key tested with sample calls
 
+## Authentication & Authorization
+
+This document covers the authentication and authorization implementation for the Bridal Prep App.
+Overview
+The auth system uses JWT (JSON Web Tokens) for stateless authentication and role-based access control for authorization. Roles are bride (default) and admin.
+
+## Database
+
+### Users Table
+
+```sql
+CREATE TABLE bridal_prep.users (
+  id            SERIAL PRIMARY KEY,
+  email         VARCHAR(255) NOT NULL UNIQUE,
+  name          VARCHAR(100),
+  password_hash TEXT NOT NULL,
+  role          TEXT NOT NULL DEFAULT 'bride',
+  created_at    TIMESTAMP DEFAULT now()
+);
+```
+
+## Backend
+
+### Auth Routes
+
+| Method | Endpoint           | Access        | Description                                               |
+| ------ | ------------------ | ------------- | --------------------------------------------------------- |
+| POST   | `/api/auth/signup` | Public        | Validates input, hashes password with bcrypt, returns JWT |
+| POST   | `/api/auth/login`  | Public        | Verifies credentials, returns JWT with userId + role      |
+| POST   | `/api/auth/logout` | Public        | Stateless — client deletes the token                      |
+| GET    | `/api/auth/me`     | Authenticated | Returns logged-in user from JWT                           |
+
+### Admin Routes
+
+| Method | Endpoint           | Access     | Description                                           |
+| ------ | ------------------ | ---------- | ----------------------------------------------------- |
+| GET    | `/api/admin/users` | Admin only | Returns all users — 401 if no token, 403 if not admin |
+
+### Auth Middleware
+
+Protects backend routes by verifying the JWT on every request. Sets `req.user = { id, role }` for downstream handlers.
+
+```js
+app.use('/api/budget', authMiddleware, budgetRoutes);
+app.use('/api/checklist', authMiddleware, checklistRoutes);
+app.use('/api/quiz', authMiddleware, quizRoutes);
+```
+
+## Frontend
+
+### Pages
+
+| File                   | Description                                                 |
+| ---------------------- | ----------------------------------------------------------- |
+| `pages/LoginPage.jsx`  | Login form — navigates to `/quiz` on success                |
+| `pages/SignUpPage.jsx` | Signup form — saves token, navigates to `/quiz`             |
+| `pages/AdminPage.jsx`  | Admin dashboard — lists all users with delete functionality |
+
+## Testing
+
+### Frontend
+
+```bash
+cd client
+npm test
+```
+
+### Backend
+
+```bash
+cd server
+npm test
+```
+
+---
+
+## Environment Variables
+
+Add to `server/.env`:
+
 ## Previews
 
 ![Home](server/screenshots/home.png)
