@@ -14,7 +14,6 @@ const SignUpPage = () => {
             console.error(err);
         }
 
-
     }
 
     return (
