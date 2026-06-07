@@ -13,12 +13,19 @@ function ConfidencePage() {
 
   if (!guide) {
     return (
-      <div className="confidence-not-found">
-        <p>Guide not found.</p>
-        <button onClick={() => navigate('/confidence')}>
-          Back to all topics
-        </button>
+      <div>
+        <div className="confidence-not-found"
+          style={{
+            minHeight: "90vh"
+          }}>
+          <p>Guide not found.</p>
+          <button onClick={() => navigate('/confidence')}>
+            Back to all topics
+          </button>
+        </div>
+        <Footer />
       </div>
+
     );
   }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { previewBudget, createBudget } from '../api/budgetApi';
+import Footer from '../components/layout/Footer';
 
 export default function CreateBudgetPage() {
   const navigate = useNavigate();
@@ -44,7 +45,10 @@ export default function CreateBudgetPage() {
   }
 
   return (
-    <div className="budget-form-container">
+    < div> <div className="budget-form-container"
+      style={{
+        minHeight: "90vh"
+      }}>
       <h1>Create Your Budget</h1>
 
       <form onSubmit={handlePreview}>
@@ -95,5 +99,8 @@ export default function CreateBudgetPage() {
 
       {error && <p className="error">{error}</p>}
     </div>
+      <Footer />
+    </div>
+
   );
 }
