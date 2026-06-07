@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from '../../context/UserContext';
 
 const Footer = () => {
-    const navigate = useNavigate();
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        navigate("/");
+    // const navigate = useNavigate();
+    const { logout } = useContext(UserContext);
 
+    const handleLogout = () => {
+        logout();
+        // navigate("/");
     }
     return (
         <div>
