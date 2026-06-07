@@ -1,6 +1,8 @@
+import express from 'express';
 import jwt from 'jsonwebtoken';
 import { pool } from '../db.js';
-import router from './auth.js';
+
+const router = express.Router();
 
 //GET /api/admin/users
 router.get('/users', async (req, res) => {
