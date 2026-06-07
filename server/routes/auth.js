@@ -131,7 +131,7 @@ router.get('/me', async(req, res) => {
   }
 
   try {
-    if (!header.startsWith('Bearer ') {
+    if (!header.startsWith('Bearer ')) {
       return res.status(401).json({ error: 'Invalid Bearer token' });
     };
     
