@@ -2,18 +2,11 @@ import Checklist from '../components/checklist/Checklist';
 import Footer from '../components/layout/Footer';
 
 export default function ChecklistPage() {
-  // const userId = 1; //will replace with real auth later
-  const userId = localStorage.getItem("userId");
+  const userId = 1;
+  //const userId = localStorage.getItem("userId");
   return (
-    <div>
-      <div className="page-container"
-        style={{
-          minHeight: "95vh"
-        }}
-      >
-        <Checklist userId={userId} />
-      </div>
-      <Footer />
+    <div className="page-container" style={{}}>
+      <Checklist userId={userId} />
     </div>
   );
 }
