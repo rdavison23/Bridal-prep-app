@@ -38,6 +38,14 @@ function Navbar() {
           }>
           Confidence
         </NavLink>
+
+        <NavLink
+          to="/login"
+          className={({ isActive }) =>
+            isActive ? 'navbar-link active' : 'navbar-link'
+          }>
+          Login
+        </NavLink>
       </div>
     </nav>
   );
