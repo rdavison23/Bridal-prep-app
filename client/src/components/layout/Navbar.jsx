@@ -49,12 +49,7 @@ function Navbar() {
               Confidence
             </NavLink>
 
-            <NavLink
-              to="/"
-              onClick={logout}
-              className={({ isActive }) =>
-                isActive ? 'navbar-link active' : 'navbar-link'
-              }>
+            <button onClick={logout}>
               Logout
             </NavLink>
           </>
