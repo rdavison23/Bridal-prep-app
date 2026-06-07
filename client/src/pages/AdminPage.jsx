@@ -1,23 +1,22 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { getAdminUsers, deleteAdminUser } from "../api/adminApi";
 import Footer from "../components/layout/Footer";
-const sampleUsers = [
-    {
-        id: 1, email: "test1@test.com", created_at: "2026-05-05"
-    },
-    {
-        id: 2, email: "test2@test.com", created_at: "2026-06-05"
-    },
-    {
-        id: 3, email: "test3@test.com", created_at: "2026-06-05"
-    },
-]
+import { UserContext } from "../context/UserContext";
 
 const AdminPage = () => {
-
-    const [users, setUsers] = useState(sampleUsers);
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+    const [users, setUsers] = useState([]);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (user && user.role !== 'admin') {
+            navigate('/home');
+        }
+    }, [user]);
 
     const handleDelete = async (id) => {
         try {
@@ -39,27 +38,26 @@ const AdminPage = () => {
         }
     };
 
-    // useEffect(() => {
-    //     const fetchUsers = async () => {
-    //         try {
-    //             setLoading(true);
-    //             setError("")
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                setLoading(true);
+                setError("")
 
-    //             const token = localStorage.getItem("token");
-    //             const usersFromApi = await getAdminUsers(token);
+                const usersFromApi = await getAdminUsers();
 
-    //             setUsers(usersFromApi);
+                setUsers(usersFromApi.users);
 
-    //         } catch (err) {
-    //             setError(err.message);
-    //             console.error(err);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
+            } catch (err) {
+                setError(err.message);
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    //     fetchUsers();
-    // }, []);
+        fetchUsers();
+    }, []);
 
 
     { loading && <p>Loading...</p> }
@@ -73,7 +71,9 @@ const AdminPage = () => {
                 alignItems: "center"
             }}>
                 <div>
-                    <h1>User Management</h1>
+                    <h1 style={{
+                        color: "#080600"
+                    }}>User Management</h1>
                     <p>View and manage registered users.</p>
                 </div>
                 <div style={{

@@ -1,13 +1,9 @@
 import apiClient from './apiClient';
 
-export async function getAdminUsers(token) {
+export async function getAdminUsers() {
     try {
         return apiClient('/api/admin/users', {
             method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-
         });
     } catch (err) {
         console.error('Failed to fetch users:', err);
@@ -15,13 +11,10 @@ export async function getAdminUsers(token) {
     }
 }
 
-export async function deleteAdminUser(userId, token) {
+export async function deleteAdminUser(userId) {
     try {
         return apiClient(`/api/admin/users/${userId}`, {
             method: 'DELETE',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
 
         });
     } catch (err) {

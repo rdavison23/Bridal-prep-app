@@ -9,6 +9,8 @@ import budgetRoutes from './routes/budgetRoutes.js';
 import checklistRoutes from './routes/checklistRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
 import authMiddleware from './middleware/authMiddleware.js';
+import adminMiddleware from "./middleware/adminMiddleware.js";
+
 dotenv.config();
 
 const app = express();
@@ -32,7 +34,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/api/admin', authMiddleware, adminMiddleware, adminRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
