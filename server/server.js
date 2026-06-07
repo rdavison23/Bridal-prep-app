@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { pool } from './db.js';
+import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin.js';
 
 import budgetRoutes from './routes/budgetRoutes.js';
 import checklistRoutes from './routes/checklistRoutes.js';
@@ -29,6 +31,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
