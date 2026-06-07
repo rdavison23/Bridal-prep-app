@@ -3,11 +3,12 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { pool } from './db.js';
 import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin.js';
 
 import budgetRoutes from './routes/budgetRoutes.js';
 import checklistRoutes from './routes/checklistRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
-
+import authMiddleware from './middleware/authMiddleware.js';
 dotenv.config();
 
 const app = express();
@@ -31,15 +32,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
 //API routes
-app.use('/api/budget', budgetRoutes);
-app.use('/api/checklist', checklistRoutes);
-app.use('/api/quiz', quizRoutes);
+app.use('/api/budget', authMiddleware, budgetRoutes);
+app.use('/api/checklist', authMiddleware, checklistRoutes);
+app.use('/api/quiz', authMiddleware, quizRoutes);
 
 app.get('/db-test', async (req, res) => {
   try {

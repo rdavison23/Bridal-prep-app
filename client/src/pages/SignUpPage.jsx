@@ -1,14 +1,18 @@
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import AuthForm from "../components/auth/AuthForm";
 import { signupUser } from "../api/authApi";
+import { UserContext } from '../context/UserContext';
+
 
 const SignUpPage = () => {
     const navigate = useNavigate();
+    const { login } = useContext(UserContext);
 
     const handleSignup = async (formData) => {
         try {
             const result = await signupUser(formData);
-            localStorage.setItem("token", result.token);
+            login(result.token, result.user);
             navigate("/quiz");
         } catch (err) {
             console.error(err);
