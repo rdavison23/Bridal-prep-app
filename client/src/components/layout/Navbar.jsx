@@ -51,7 +51,7 @@ function Navbar() {
 
             <button onClick={logout}>
               Logout
-            </NavLink>
+            </button>
           </>
         ) : (
           <NavLink
