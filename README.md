@@ -223,3 +223,13 @@ A full accessibility sweep was completed across all major components:
 - FE ↔ BE connection tested
 - CORS configured
 - Pexels API key tested with sample calls
+
+## Previews
+
+![Home](server/screenshots/home.png)
+![StyleQuiz](server/screenshots/StyleQuiz.png)
+![MoodBoard](server/screenshots/Moodboard.png)
+![CreateBudget](server/screenshots/CreateBudget.png)
+![BudgetSummary](server/screenshots/BudgetSummary.png)
+![Checklist](server/screenshots/Checklist.png)
+![Confidence](server/screenshots/Confidence.png)

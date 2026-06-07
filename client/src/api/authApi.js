@@ -25,3 +25,12 @@ export async function loginUser(data) {
         throw new Error('Unable to Log in. Please try again.');
     }
 }
+
+// GET /api/auth/me
+export const getMe = async (token) => {
+    return apiClient('/api/auth/me', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+}
