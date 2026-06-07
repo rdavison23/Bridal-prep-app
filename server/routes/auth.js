@@ -143,6 +143,7 @@ router.get('/me', async(req, res) => {
         return res.status(404).json({ error: 'User could not be found.' });
     };
 
+    res.status(200).json({ user: result.rows[0] });
   } catch (error) {
     console.error('Error! Could not get user.');
     res.status(500).json({ error: 'Error! Could not get user.' });
