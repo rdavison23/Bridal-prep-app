@@ -19,8 +19,6 @@ export default function AppRouter() {
       <Navbar />
       <Routes>
         <Route element={<ProtectedRoute />} >
-          <Route path="/" element={<HomeDashboard />} />
-          <Route path="/home" element={<HomeDashboard />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/quiz/results" element={<QuizResultsPage />} />
           <Route path="/budget" element={<BudgetPage />} />
@@ -31,6 +29,8 @@ export default function AppRouter() {
           <Route path="/admin" element={<AdminPage />} />
         </Route>
 
+        <Route path="/" element={<HomeDashboard />} />
+        <Route path="/home" element={<HomeDashboard />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

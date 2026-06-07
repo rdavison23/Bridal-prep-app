@@ -1,7 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext.jsx';
 import './navbar.css';
 
 function Navbar() {
+  const { user, loading, logout } = useContext(UserContext);
+
+  if (loading) {
+    return null;
+  }
+
   return (
     <nav className="navbar" aria-label="Main navigation">
       <NavLink to="/home" className="navbar-logo" aria-label="Bridal Prep home">
@@ -9,35 +17,51 @@ function Navbar() {
       </NavLink>
 
       <div className="navbar-links">
-        <NavLink
-          to="/quiz"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Quiz
-        </NavLink>
-        <NavLink
-          to="/create-budget"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Budget
-        </NavLink>
-        <NavLink
-          to="/checklist"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Checklist
-        </NavLink>
+        {user ? (
+          <>
+            <NavLink
+              to="/quiz"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Quiz
+            </NavLink>
+            <NavLink
+              to="/create-budget"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Budget
+            </NavLink>
+            <NavLink
+              to="/checklist"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Checklist
+            </NavLink>
 
-        <NavLink
-          to="/confidence"
-          className={({ isActive }) =>
-            isActive ? 'navbar-link active' : 'navbar-link'
-          }>
-          Confidence
-        </NavLink>
+            <NavLink
+              to="/confidence"
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }>
+              Confidence
+            </NavLink>
+
+            <button onClick={logout}>
+              Logout
+            </NavLink>
+          </>
+        ) : (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? 'navbar-link active' : 'navbar-link'
+            }>
+            Login
+          </NavLink>
+        )}
       </div>
     </nav>
   );
