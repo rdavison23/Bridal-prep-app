@@ -9,6 +9,9 @@ import ConfidenceSection from './components/confidence/ConfidenceSection';
 import ConfidencePage from './components/confidence/ConfidencePage';
 import HomeDashboard from './pages/HomeDashboard';
 import ProtectedRoute from './components/protected/ProtectedRoute';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
+import AdminPage from './pages/AdminPage';
 
 export default function AppRouter() {
   return (
@@ -25,8 +28,11 @@ export default function AppRouter() {
           <Route path="/checklist" element={<ChecklistPage />} />
           <Route path="/confidence" element={<ConfidenceSection />} />
           <Route path="/confidence/:guideId" element={<ConfidencePage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Route>
-      
+
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
