@@ -3,7 +3,7 @@ import apiClient from './apiClient';
 // POST /api/signup
 export async function signupUser(data) {
   try {
-    return apiClient('/api/auth/signup', {
+    return await apiClient('/api/auth/signup', {
       method: 'POST',
       body: JSON.stringify(data),
     });
@@ -16,7 +16,7 @@ export async function signupUser(data) {
 // POST /api/login
 export async function loginUser(data) {
   try {
-    return apiClient('/api/auth/login', {
+    return await apiClient('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(data),
     });
@@ -26,10 +26,7 @@ export async function loginUser(data) {
   }
 }
 
-export const getMe = async (token) => {
-  return apiClient('/api/auth/me', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+//GET /api/auth/me
+export async function getMe() {
+  return apiClient('/api/auth/me', {});
+}
