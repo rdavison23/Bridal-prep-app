@@ -21,7 +21,7 @@ export async function loginUser(data) {
       body: JSON.stringify(data),
     });
   } catch (err) {
-    console.error('Failed to Log in:', err);
+    console.error('Failed to log in:', err);
     throw new Error('Unable to Log in. Please try again.');
   }
 }
