@@ -31,16 +31,19 @@
   background: #fff7f1;
   border-top: 2px solid #c57a7a;
   border-bottom: 0.5px solid #dcc7a1;
-  padding: 0.875rem 1rem;
+  padding: 0.5rem 1rem 0.55rem;
   text-align: center;
   position: sticky;
   top: 57px; /* adjust this to match your navbar's height */
   z-index: 10;
   margin-bottom: 1.25rem;
+  /* a little longer: extend 2rem past the grid on each side */
+  margin-left: -2rem;
+  margin-right: -2rem;
 }
 
 .style-banner-eyebrow {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: #c57a7a;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -49,7 +52,7 @@
 
 .style-banner-name {
   font-family: var(--heading-font);
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
   font-weight: 500;
   color: #2c2c2c;
   margin: 0;
@@ -158,5 +161,10 @@
 @media (max-width: 768px) {
   .image-grid {
     columns: 2;
+  }
+
+  .style-banner {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }
 }
