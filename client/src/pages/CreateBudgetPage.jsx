@@ -101,7 +101,6 @@ export default function CreateBudgetPage() {
 
         {error && <p className="error">{error}</p>}
       </div>
-      <Footer />
     </div>
   );
 }
