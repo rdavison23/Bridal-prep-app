@@ -1,5 +1,4 @@
 import Checklist from '../components/checklist/Checklist';
-import Footer from '../components/layout/Footer';
 
 export default function ChecklistPage() {
   const userId = 1;

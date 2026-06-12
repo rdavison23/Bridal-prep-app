@@ -1,5 +1,4 @@
 import useBudget from '../hooks/useBudget';
-import Footer from '../components/layout/Footer';
 import BudgetBreakdown from '../components/budget/BudgetBreakdown';
 
 export default function BudgetPage() {
@@ -17,6 +16,5 @@ export default function BudgetPage() {
       </div>
       <Footer />
     </div>
-
   );
 }

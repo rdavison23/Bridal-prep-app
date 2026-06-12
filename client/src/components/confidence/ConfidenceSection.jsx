@@ -15,8 +15,8 @@ function ConfidenceSection() {
             You're more ready than you think.
           </h1>
           <p className="confidence-hero-sub">
-            Pick a topic that's on your mind. Each guide takes about 3 minutes to
-            read.
+            Pick a topic that's on your mind. Each guide takes about 3 minutes
+            to read.
           </p>
         </div>
 
@@ -24,8 +24,9 @@ function ConfidenceSection() {
           {confidenceGuides.map((guide) => (
             <button
               key={guide.id}
-              className={`confidence-card ${guide.isPepTalk ? 'confidence-card--pep' : ''
-                }`}
+              className={`confidence-card ${
+                guide.isPepTalk ? 'confidence-card--pep' : ''
+              }`}
               onClick={() => navigate(guide.route)}>
               <span className="confidence-card-step">{guide.step}</span>
               <h2 className="confidence-card-title">{guide.title}</h2>
@@ -38,9 +39,7 @@ function ConfidenceSection() {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
-
   );
 }
 
