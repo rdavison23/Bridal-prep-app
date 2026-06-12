@@ -1,5 +1,6 @@
 import { pool } from '../db.js';
 import { calculateBudget } from '../utils/calculateBudget.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 export async function previewBudget(req, res) {
   try {
@@ -16,7 +17,8 @@ export async function previewBudget(req, res) {
 
 export async function createBudget(req, res) {
   try {
-    const { userId = 1, idealBudget, maxBudget } = req.body; // default to 1 until auth is implemented
+    const userId = req.user.userId;
+    const { idealBudget, maxBudget } = req.body;
 
     const calc = calculateBudget({ idealBudget, maxBudget });
 
@@ -55,7 +57,7 @@ export async function createBudget(req, res) {
 
 export async function getLatestBudget(req, res) {
   try {
-    const userId = req.user?.id || 1; // default to 1 until auth is implemented
+    const userId = req.user?.userId;
 
     const query = `
       SELECT

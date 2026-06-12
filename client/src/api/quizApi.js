@@ -1,19 +1,8 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import apiClient from './apiClient';
 
 export async function submitQuiz(payload) {
-  if (!API_BASE_URL) {
-    throw new Error('VITE_API_BASE_URL is not defined');
-  }
-
-  const res = await fetch(`${API_BASE_URL}/api/quiz`, {
+  return apiClient('/api/quiz', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
-
-  if (!res.ok) {
-    throw new Error('Failed to submit quiz');
-  }
-
-  return res.json();
 }

@@ -32,6 +32,7 @@ function computeStyleProfile(answers) {
 }
 
 export async function handleQuizSubmission(req, res) {
+  console.log(req);
   try {
     const { userId, answers, quizVersion } = req.body;
 
