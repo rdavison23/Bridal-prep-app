@@ -1,0 +1,51 @@
+/* === Footer === */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff7f1;
+  border-top: 0.5px solid #dcc7a1;
+  margin-top: auto;
+}
+
+.footer-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+.footer-logout {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #c57a7a;
+  background: transparent;
+  border: 1px solid #c57a7a;
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.footer-logout:hover {
+  background: #c57a7a;
+  color: #fff7f1;
+}
+
+.footer-logout:focus-visible {
+  outline: 2px solid #c57a7a;
+  outline-offset: 2px;
+}
+
+/* === Mobile === */
+@media (max-width: 640px) {
+  .footer {
+    padding: 1rem;
+  }
+
+  .footer-logout {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.85rem;
+  }
+}
