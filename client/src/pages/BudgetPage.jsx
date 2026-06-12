@@ -9,12 +9,9 @@ export default function BudgetPage() {
   if (!budget) return <p>No budget found. Create one to get started!</p>;
 
   return (
-    <div>
-      <div className="budget-container">
-        <h1>Your Budget Summary</h1>
-        <BudgetBreakdown budget={budget} />
-      </div>
-      <Footer />
+    <div className="budget-container">
+      <h1>Your Budget Summary</h1>
+      <BudgetBreakdown budget={budget} />
     </div>
   );
 }

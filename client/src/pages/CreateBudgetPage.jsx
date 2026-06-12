@@ -44,63 +44,56 @@ export default function CreateBudgetPage() {
   }
 
   return (
-    <div>
-      {' '}
-      <div
-        className="budget-form-container"
-        style={{
-          minHeight: '90vh',
-        }}>
-        <h1>Create Your Budget</h1>
+    <div className="budget-form-container">
+      <h1>Create Your Budget</h1>
 
-        <form onSubmit={handlePreview}>
-          <label>
-            Ideal Budget
-            <input
-              type="number"
-              value={idealBudget}
-              onChange={(e) => setIdealBudget(e.target.value)}
-              required
-            />
-          </label>
+      <form onSubmit={handlePreview}>
+        <label>
+          Ideal Budget
+          <input
+            type="number"
+            value={idealBudget}
+            onChange={(e) => setIdealBudget(e.target.value)}
+            required
+          />
+        </label>
 
-          <label>
-            Maximum Budget
-            <input
-              type="number"
-              value={maxBudget}
-              onChange={(e) => setMaxBudget(e.target.value)}
-              required
-            />
-          </label>
+        <label>
+          Maximum Budget
+          <input
+            type="number"
+            value={maxBudget}
+            onChange={(e) => setMaxBudget(e.target.value)}
+            required
+          />
+        </label>
 
-          <button type="submit">Preview Budget</button>
-        </form>
+        <button type="submit">Preview Budget</button>
+      </form>
 
-        {preview && (
-          <div className="preview-card">
-            <h2>Preview</h2>
-            <p>
-              <strong>Ideal:</strong> ${preview.idealBudget}
-            </p>
-            <p>
-              <strong>Max:</strong> ${preview.maxBudget}
-            </p>
-            <p>
-              <strong>Hidden Costs:</strong> ${preview.hiddenCostsTotal}
-            </p>
-            <p>
-              <strong>Final Estimate:</strong> ${preview.finalEstimate}
-            </p>
+      {preview && (
+        <div className="preview-card">
+          <h2>Preview</h2>
+          <p>
+            <strong>Ideal:</strong> ${preview.idealBudget}
+          </p>
+          <p>
+            <strong>Max:</strong> ${preview.maxBudget}
+          </p>
+          <p>
+            <strong>Hidden Costs:</strong> ${preview.hiddenCostsTotal}
+          </p>
+          <p>
+            <strong>Final Estimate:</strong> ${preview.finalEstimate}
+          </p>
 
-            <button onClick={handleSave} disabled={saving}>
-              {saving ? 'Saving...' : 'Save Budget'}
-            </button>
-          </div>
-        )}
+          <button onClick={handleSave} disabled={saving}>
+            {saving ? 'Saving...' : 'Save Budget'}
+          </button>
+        </div>
+      )}
 
-        {error && <p className="error">{error}</p>}
-      </div>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }
