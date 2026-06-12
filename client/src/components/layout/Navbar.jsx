@@ -4,7 +4,7 @@ import { UserContext } from '../../context/UserContext.jsx';
 import './navbar.css';
 
 function Navbar() {
-  const { user, loading, logout } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
 
   if (loading) {
     return null;
@@ -48,10 +48,6 @@ function Navbar() {
               }>
               Confidence
             </NavLink>
-
-            <button onClick={logout}>
-              Logout
-            </button>
           </>
         ) : (
           <NavLink
