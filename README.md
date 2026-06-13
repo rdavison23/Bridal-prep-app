@@ -306,10 +306,12 @@ Add to `server/.env`:
 
 ## Previews
 
-![Home](server/screenshots/home.png)
-![StyleQuiz](server/screenshots/StyleQuiz.png)
-![MoodBoard](server/screenshots/Moodboard.png)
-![CreateBudget](server/screenshots/CreateBudget.png)
-![BudgetSummary](server/screenshots/BudgetSummary.png)
-![Checklist](server/screenshots/Checklist.png)
-![Confidence](server/screenshots/Confidence.png)
+![Home](server/previews/Home-GetStarted%20.png)
+![Welcome](server/previews/Welcome-login:signUp.png)
+![StyleQuiz](server/previews/Bridal-Quiz.png)
+![MoodBoard](server/previews/Bridal-moodboard.png)
+![CreateBudget](server/previews/Create-budget%20.png)
+![BudgetPreview](server/previews/Budget-Preview.png)
+![BudgetSummary](server/previews/Budget-Summary.png)
+![Checklist](server/previews/Checklist.png)
+![Confidence](server/previews/Bridal-confidence.png)
